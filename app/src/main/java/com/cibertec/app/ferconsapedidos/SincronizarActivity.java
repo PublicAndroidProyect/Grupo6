@@ -22,6 +22,7 @@ public class SincronizarActivity extends AppCompatActivity {
     ProgressBar pbarProgreso;
     AsyncTaskProducto asyncTaskProducto;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
