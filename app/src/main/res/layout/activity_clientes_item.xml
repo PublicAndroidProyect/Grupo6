@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/MainContainer">
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvProject"
+        style="@style/CardView.Light">
+
+        <RelativeLayout style="@style/CardViewContainer">
+
+            <ImageView
+                android:id="@+id/ivProject"
+                android:src="@drawable/logo"
+                style="@style/CardViewProjectImagen" />
+
+            <TextView
+                android:id="@+id/tvNombreClente"
+                style="@style/CardViewProjectTitle" />
+
+            <TextView
+                android:id="@+id/tvRUC"
+                android:layout_below="@+id/tvNombreClente"
+                style="@style/CardViewProjectDetail"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</LinearLayout>

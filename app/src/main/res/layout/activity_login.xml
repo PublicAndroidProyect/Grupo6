@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".UiLoginActivity"
+    style="@style/MainContainer">
+    <LinearLayout style="@style/LoginContainer">w
+        <ImageView style="@style/LoginImageView" />
+        <TextView
+            style="@style/LoginTextView"
+            android:text="@string/app_name"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilUser"
+            style="@style/LoginTextInputLayout">
+            <EditText
+                android:id="@+id/etUser"
+                android:hint="@string/Login_user"
+                android:inputType="text"
+                style="@style/EditText" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilPassword"
+            style="@style/LoginTextInputLayout">
+            <EditText
+                android:id="@+id/etPassword"
+                android:hint="@string/Login_password"
+                android:inputType="textPassword"
+                style="@style/EditText" />
+        </android.support.design.widget.TextInputLayout>
+        <Button
+            android:id="@+id/btAcceder"
+            style="@style/SignInButtom"
+            android:text="INGRESAR"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MainContainerPadding">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilBuscaPedido"
+        style="@style/TextInputLayout">
+        <EditText
+            android:id="@+id/etBuscaPedido"
+            android:hint="@string/Order_search"
+            android:inputType="text"
+            style="@style/EditText" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ListView
+        android:id="@+id/lvPedidoCabecera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/etBuscaPedido" />
+
+
+</LinearLayout>

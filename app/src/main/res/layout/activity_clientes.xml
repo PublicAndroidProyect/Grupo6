@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/idMainContainer"
+    style="@style/MainContainerPadding">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilBuscarCliente"
+        style="@style/TextInputLayout">
+
+        <EditText
+            android:id="@+id/etBuscarCliente"
+            style="@style/EditText"
+            android:hint="@string/Search_Client"
+            android:inputType="text" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvClientes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

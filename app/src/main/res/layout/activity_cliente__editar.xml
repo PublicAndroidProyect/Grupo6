@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MainContainerPadding"
+    android:layout_width="match_parent"
+    tools:context="com.cibertec.app.ferconsapedidos.Cliente_Editar">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilcliente"
+        style="@style/TextInputLayout">
+
+        <EditText
+            android:id="@+id/etcliente"
+            style="@style/EditText"
+            android:hint="@string/Client_name"
+            android:inputType="text" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilRUC"
+        style="@style/TextInputLayout">
+
+        <EditText
+            android:id="@+id/etRUC"
+            style="@style/EditText"
+            android:hint="@string/Client_RUC"
+            android:inputType="number"
+            android:maxLength="8" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilDireccion"
+        style="@style/TextInputLayout">
+
+        <EditText
+            android:id="@+id/etDireccion"
+            style="@style/EditText"
+            android:hint="@string/Client_address"
+            android:inputType="text" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilTelf"
+        style="@style/TextInputLayout">
+
+        <EditText
+            android:id="@+id/etTelf"
+            style="@style/EditText"
+            android:hint="@string/Client_phone"
+            android:inputType="text" />
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+        <Button
+            android:id="@+id/btguardar"
+            android:text="@string/Button_save"
+            style="@style/Buttom" />
+        <Button
+            android:id="@+id/btacciones"
+            android:text="@string/Button_cancel"
+            style="@style/Buttom" />
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>

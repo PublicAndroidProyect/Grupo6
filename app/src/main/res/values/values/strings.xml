@@ -1,0 +1,41 @@
+<resources>
+    <!-- Nombre de apliacion. -->
+    <!-- <string name="app_name">Toolbar</string> -->
+    <!-- botones de accion de toolbar -->
+    <!-- toolbar login -->
+    <string name="action_login_editar">Editar</string>
+    <string name="action_login_adicionar">Adicionar</string>
+    <!-- toolbar menu principal -->
+    <string name="action_menupri_login">Login</string>
+    <string name="action_menupri_cerrarapp">Cerrar aplicacion</string>
+    <!-- botones de accion de toolbar -->
+    <string name="subtitulo_activity_login">Login</string>
+    <string name="subtitulo_activity_menuprincipal">Menu Principal</string>
+    <!-- Etiquetas de botones. -->
+    <!-- Login. -->
+    <string name="button_login_acceder">Acceder</string>
+    <string name="title_activity_clentes">ClentesActivity</string>
+    <string name="title_activity_producto">ProductoActivity</string>
+    <string name="title_activity_pedido">PedidoActivity</string>
+    <string name="title_activity_peidido_cabecera">PeididoCabeceraActivity</string>
+    <string name="title_activity_producto_detalle">ProductoDetalleActivity</string>
+    <string name="title_activity_pruducto_item_editar">PruductoItemEditarActivity</string>
+    <string name="title_activity_producto_item_editar">ProductoItemEditarActivity</string>
+    <string name="title_activity_pedido_detalle_item_nuevo">PedidoDetalleItemNuevoActivity</string>
+    <string name="title_activity_pedido_detalle_item_editar">PedidoDetalleItemEditarActivity</string>
+    <string name="title_activity_clientes">ClientesActivity</string>
+    <string name="title_activity_pedido_listar">PedidoListarActivity</string>
+    <string name="title_activity_pedido_detalle_editar_item">PedidoDetalleEditarItemActivity </string>
+    <string name="title_activity_pedido_detalle_nuevo_item">PedidoDetalleNuevoItemActivity</string>
+    <!-- Base application theme. -->
+    <string name="app_name">FerconsaPedidos</string>
+    <string name="action_settings">Settings</string>
+    <string name="Login_user">Usuario</string>
+    <string name="Login_password">Contraseña</string>
+    <string name="Login_button">INGRESAR</string>
+    <string name="title_activity_ud_client">UdClientActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="MenuClient">Clientes</string>
+    <string name="MenuOrder">Pedidos</string>
+    <string name="MenuSynchronize">sincronizar</string>
+</resources>

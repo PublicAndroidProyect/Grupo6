@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="AppThemecolorPrimary">#2196F3</color>
+    <color name="AppThemecolorPrimaryDark">#2196F3</color>
+    <color name="AppThemetextColorPrimary">#FFFFFF</color>
+    <color name="AppThemetextColorHint">#666</color>
+    <color name="AppThemecolorAccent">#2196F3</color>
+    <color name="backgroundTint">#F44336</color>
+
+    <color name="TextView">#666</color>
+
+    <color name="MenuContainerbackground">#FFFFFF</color>
+
+    <color name="LoginContainerbackground">#ffffff</color>
+    <color name="ButtomSignInbackground">#2196F3</color>
+    <color name="ButtomSignIntextColor">#FFFFFF</color>
+
+    <color name="TemplateUserNicktextColor">#FFFFFF</color>
+
+    <color name="MainContainerbackground">#FFFFFF</color>
+    <color name="EditTexttextColor">#333333</color>
+
+    <color name="MenuButtonbackground">#FFFFFF</color>
+    <color name="MenuButtontextColor">#000000</color>
+
+    <color name="CardViewbackground">#FFFFFF</color>
+    <color name="Buttombackground">#FFFFFF</color>
+    <color name="ButtomtextColor">#2196F3</color>
+
+</resources>

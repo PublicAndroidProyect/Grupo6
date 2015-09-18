@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MenuContainer">
+    <LinearLayout style="@style/MenuContainerUser">
+
+        <RelativeLayout style="@style/TemplateUser">
+
+            <ImageView
+                android:id="@+id/ivUser"
+                style="@style/TemplateUserImagen"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/tvNick"
+                android:text="Nombre de usuario :D"
+                style="@style/TemplateUserNick"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/MenuContainerOption">
+
+        <Button
+            android:id="@+id/btCliente"
+            android:drawableLeft="@drawable/ic_location_city_black_18dp"
+            android:text="@string/MenuClient"
+            style="@style/MenuButton" />
+
+        <Button
+            android:id="@+id/btPedidos"
+            android:drawableLeft="@drawable/ic_markunread_mailbox_black_18dp"
+            android:text="@string/MenuOrder"
+            style="@style/MenuButton"/>
+
+        <Button
+            android:id="@+id/btSynchronize"
+            android:drawableLeft="@drawable/ic_loop_black_18dp"
+            android:text="@string/MenuSynchronize"
+            style="@style/MenuButton"/>
+
+        <Button
+            android:id="@+id/btMaps"
+            android:drawableLeft="@drawable/ic_place_black_18dp"
+            android:text="Maps :D]"
+            style="@style/MenuButton"/>
+    </LinearLayout>
+</LinearLayout>
