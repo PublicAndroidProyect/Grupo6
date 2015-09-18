@@ -23,10 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        //toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
-        //toolbar.setSubtitle("Login");
 
-        //setSupportActionBar(toolbar);
         try {
             dataBaseHelper = new DataBaseHelper(LoginActivity.this);
             dataBaseHelper.createDataBase();
