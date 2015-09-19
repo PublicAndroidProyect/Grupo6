@@ -17,33 +17,31 @@ import android.widget.Toast;
 
 
 public class MenuPrincipalActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private Button btClientes;
+
+    private Button btRegistraPedido;
     private Button btPedidos;
-    private Button  btMaps;
+    private Button  btCliente;
     private Button btSynchronize;
     private DrawerLayout dlmenu;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     public  static Integer ARG_OPCION = 0 ;
-    public final static Integer ARG_OPCION_CLIENTES = 1;
+    public final static Integer ARG_OPCION_CLIENTES = 4;
     public final static Integer  ARG_OPCION_PEDIDOS = 2;
-    //private final static int REQUEST_CODE = 1;
-    //private final static int REQUEST_CODE_CLICK = 2;
+    public final static Integer  ARG_OPCION_NUEVOPEDIDO = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-        //toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
-        //toolbar.setSubtitle("Menu Principal");
-        //setSupportActionBar(toolbar);
 
-        btClientes = (Button)findViewById(R.id.btCliente);
-        btClientes.setOnClickListener(new View.OnClickListener() {
+
+        btRegistraPedido = (Button)findViewById(R.id.btRegistraPedido);
+        btRegistraPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent newIncome = new Intent(MenuPrincipalActivity.this,ClientesActivity.class);
-                ARG_OPCION = ARG_OPCION_CLIENTES;
-                //newIncome.putExtra(ARG_OPCION,ARG_CLIENTES);
+                ARG_OPCION = ARG_OPCION_NUEVOPEDIDO;
+
                 MenuPrincipalActivity.this.startActivity(newIncome);
             }
         });
@@ -58,12 +56,16 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             }
         });
 
-        btMaps = (Button)findViewById(R.id.btMaps);
-        btMaps.setOnClickListener(new View.OnClickListener() {
+        btCliente = (Button)findViewById(R.id.btCliente);
+        btCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newIncome1 = new Intent( MenuPrincipalActivity.this, ClienteDetalle.class);
-                MenuPrincipalActivity.this.startActivity(newIncome1);
+                Intent newIncome = new Intent(MenuPrincipalActivity.this,ClientesActivity.class);
+                ARG_OPCION = ARG_OPCION_CLIENTES;
+                MenuPrincipalActivity.this.startActivity(newIncome);
+
+                //Intent newIncome1 = new Intent( MenuPrincipalActivity.this, ClienteDetalle.class);
+                //MenuPrincipalActivity.this.startActivity(newIncome1);
             }
         });
 

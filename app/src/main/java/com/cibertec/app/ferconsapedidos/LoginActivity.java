@@ -14,15 +14,13 @@ import com.cibertec.app.ferconsapedidos.Dao.DataBaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+
     private DataBaseHelper dataBaseHelper;
     private Button btAcceder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
 
         try {
             dataBaseHelper = new DataBaseHelper(LoginActivity.this);

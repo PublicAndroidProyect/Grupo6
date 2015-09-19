@@ -24,8 +24,8 @@
     <string name="Order_number">N° Pedido</string>
     <string name="Order_client">Razón Social</string>
     <string name="Order_search">Buscar por Razón Social / N° Pedido</string>
-    <string name="MenuClient">Clientes</string>
-    <string name="MenuOrder">Pedidos</string>
+    <string name="MenuClient">Registrar Pedido</string>
+    <string name="MenuOrder">Listar Pedidos</string>
     <string name="MenuSynchronize">sincronizar</string>
     <string name="Client_name">Razón Social</string>
     <string name="Client_RUC">RUC</string>
@@ -73,16 +73,16 @@
         <string name="title_activity_ud_client">UdClientActivity</string>
 
         <string name="hello_world">Hello world!</string>
-    <string name="title_activity_clientes">ClientesActivity</string>
-    <string name="title_activity_pedido_listar">PedidoListarActivity</string>
+    <string name="title_activity_clientes">Clientes</string>
+    <string name="title_activity_pedido_listar">ListarPedidos</string>
     <string name="title_activity_pedido_detalle_editar_item">Editar detalle de pedido
     </string>
     <string name="title_activity_pedido_detalle_nuevo_item">Detalle de pedido</string>
-    <string name="title_activity_pedido_cabecera">Pedido cabecera</string>
+    <string name="title_activity_pedido_cabecera">Listar Pedidos</string>
 
 
     <string name="SearchProduct">Buscar Descripcion o Codigo</string>
     <string name="title_activity_cliente_detalle">Detalle de cliente</string>
-    <string name="title_activity_sincronizar">SincronizarActivity</string>
+    <string name="title_activity_sincronizar">Sincronizar</string>
 </resources>
 

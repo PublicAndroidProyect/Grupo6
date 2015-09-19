@@ -87,7 +87,7 @@ public class PedidoActivity extends AppCompatActivity {
         spCondicionPago.setAdapter(adpatadorCondicionPago);
 
         List = (ListView) findViewById(R.id.lvDetallePedido);
-        if (proceso == MenuPrincipalActivity.ARG_OPCION_CLIENTES){//1
+        if (proceso == MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){//1
             Cliente cliente = getIntent().getParcelableExtra(ClientesActivity.ARG_CLIENTE);
 
             tvNombreCliente = (TextView)findViewById(R.id.tvNombreClientePedido);
@@ -173,7 +173,7 @@ public class PedidoActivity extends AppCompatActivity {
                 pedidoCabecera.setCondicionPago(result);
 
                 PedidoCabeceraDAO pedidoCabeceraDAO = new PedidoCabeceraDAO();
-                if (proceso== MenuPrincipalActivity.ARG_OPCION_CLIENTES){ //1 Nuevo pedido
+                if (proceso== MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){ //1 Nuevo pedido
                     IdPedidoCabecera =  pedidoCabeceraDAO.addPedidoCabecera(pedidoCabecera);
                     MensajeTransaccion ="Se creo el pedido No ";
                 }

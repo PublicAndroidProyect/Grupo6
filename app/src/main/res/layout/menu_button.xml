@@ -20,7 +20,7 @@
     <LinearLayout style="@style/MenuContainerOption">
 
         <Button
-            android:id="@+id/btCliente"
+            android:id="@+id/btRegistraPedido"
             android:drawableLeft="@drawable/ic_location_city_black_18dp"
             android:text="@string/MenuClient"
             style="@style/MenuButton" />
@@ -38,9 +38,9 @@
             style="@style/MenuButton"/>
 
         <Button
-            android:id="@+id/btMaps"
+            android:id="@+id/btCliente"
             android:drawableLeft="@drawable/ic_place_black_18dp"
-            android:text="Maps :D]"
+            android:text="Cliente"
             style="@style/MenuButton"/>
     </LinearLayout>
 </LinearLayout>

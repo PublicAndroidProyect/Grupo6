@@ -5,6 +5,8 @@
     tools:context="com.cibertec.app.ferconsapedidos.Cliente_Editar">
 
 
+
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/tilcliente"
         style="@style/TextInputLayout">
@@ -67,9 +69,28 @@
             android:id="@+id/btacciones"
             android:text="@string/Button_cancel"
             style="@style/Buttom" />
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/textView"
+            android:layout_gravity="bottom" />
 
+        <Button
+            android:id="@+id/btVerMapa"
+            android:text="Ver Mapa"
+            style="@style/Buttom" />
+
+
+    </LinearLayout>
 
 
 

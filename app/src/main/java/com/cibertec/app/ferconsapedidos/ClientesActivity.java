@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -47,6 +48,8 @@ public class ClientesActivity extends AppCompatActivity {
 
         recViewCliente.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+
+
         etBuscaCliente = (EditText) findViewById(R.id.etBuscarCliente);
         etBuscaCliente.addTextChangedListener(new TextWatcher() {
             @Override
@@ -69,17 +72,21 @@ public class ClientesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int itemPosition = recViewCliente.getChildAdapterPosition(v);
-                // Cliente cliente = arrayCliente.get(itemPosition);
-                // Toast.makeText(ClientesActivity.this, cliente.getNombreCliente().toString(), Toast.LENGTH_LONG).show();
-
-
-                //Toast.makeText(getBaseContext(), "Position: " + position, Toast.LENGTH_SHORT).show();
-                Cliente cliente = arrayCliente.get(itemPosition);
-                Intent intent = new Intent(getBaseContext(), PedidoActivity.class);
-                intent.putExtra(ARG_CLIENTE, cliente);
-                intent.putExtra("ARG_POSITION", itemPosition);
-
-                startActivity(intent);
+                if (MenuPrincipalActivity.ARG_OPCION==MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){
+                    Cliente cliente = arrayCliente.get(itemPosition);
+                    Intent intent = new Intent(getBaseContext(), PedidoActivity.class);
+                    intent.putExtra(ARG_CLIENTE, cliente);
+                    intent.putExtra("ARG_POSITION", itemPosition);
+                    startActivity(intent);
+                }
+                if (MenuPrincipalActivity.ARG_OPCION==MenuPrincipalActivity.ARG_OPCION_CLIENTES){
+                    Cliente cliente = arrayCliente.get(itemPosition);
+                    Intent intent = new Intent(getBaseContext(), Cliente_Editar.class);
+                    intent.putExtra(ARG_CLIENTE, cliente);
+                    intent.putExtra(ARG_POSITION, itemPosition);
+                    intent.putExtra(ARG_IDCLIENTE, String.valueOf(cliente.getIdCliente()));
+                    startActivityForResult(intent, REQUEST_CODE_CLICK);
+                }
             }
         });
 
@@ -87,22 +94,14 @@ public class ClientesActivity extends AppCompatActivity {
 
             @Override
             public boolean onLongClick(View v) {
-                //  Toast.makeText(ClientesActivity.this, "ddddd", Toast.LENGTH_LONG).show();
 
-                int itemPosition = recViewCliente.getChildAdapterPosition(v);
-
-                Cliente cliente = arrayCliente.get(itemPosition);
-
-
-                Intent intent = new Intent(getBaseContext(), Cliente_Editar.class);
-
-                intent.putExtra(ARG_CLIENTE, cliente);
-                intent.putExtra(ARG_POSITION, itemPosition);
-                intent.putExtra(ARG_IDCLIENTE, String.valueOf(cliente.getIdCliente()));
-
-            //    Toast.makeText(ClientesActivity.this, String.valueOf(itemPosition) + " " + String.valueOf(cliente.getIdCliente()), Toast.LENGTH_LONG).show();
-
-                startActivityForResult(intent, REQUEST_CODE_CLICK);
+                //int itemPosition = recViewCliente.getChildAdapterPosition(v);
+                //Cliente cliente = arrayCliente.get(itemPosition);
+                //Intent intent = new Intent(getBaseContext(), Cliente_Editar.class);
+                //intent.putExtra(ARG_CLIENTE, cliente);
+                //intent.putExtra(ARG_POSITION, itemPosition);
+                //intent.putExtra(ARG_IDCLIENTE, String.valueOf(cliente.getIdCliente()));
+                //startActivityForResult(intent, REQUEST_CODE_CLICK);
 
                 return true;
             }
@@ -115,6 +114,11 @@ public class ClientesActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_clientes, menu);
+        if (MenuPrincipalActivity.ARG_OPCION==MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){
+            menu.findItem(R.id.action_add).setVisible(false);
+            menu.findItem(R.id.action_settings).setVisible(false);
+
+        }
         return true;
     }
 
@@ -124,7 +128,13 @@ public class ClientesActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(getBaseContext(), ClienteDetalle.class);
 
+            startActivity(intent);
+
+            //   return true;
+        }
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
             Intent intent = new Intent(getBaseContext(), Cliente_Editar.class);
@@ -156,7 +166,7 @@ public class ClientesActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_CLICK && resultCode == 44) {
 
             int position = data.getIntExtra(ARG_POSITION, -1);
-           // Toast.makeText(ClientesActivity.this, String.valueOf(position), Toast.LENGTH_LONG).show();
+
             Cliente cliente = data.getParcelableExtra(ARG_CLIENTE);
             if (position != -1) {
                 adaptadorCliente.remove(position);
@@ -169,7 +179,7 @@ public class ClientesActivity extends AppCompatActivity {
             Cliente cliente = data.getParcelableExtra(ARG_CLIENTE);
 
 
-           // Toast.makeText(ClientesActivity.this, String.valueOf(position), Toast.LENGTH_LONG).show();
+
             if (position != -1) {
                 adaptadorCliente.update(cliente, position);
                 MClienteDAO.updateCliente(cliente);

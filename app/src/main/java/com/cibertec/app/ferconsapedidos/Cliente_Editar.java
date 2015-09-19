@@ -39,6 +39,7 @@ public class Cliente_Editar extends AppCompatActivity {
 
         btacciones = (Button) findViewById(R.id.btacciones);
         btguardar = (Button) findViewById(R.id.btguardar);
+        Button btVerMapa = (Button)findViewById(R.id.btVerMapa);
 
         if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(ClientesActivity.ARG_CLIENTE)) {
             Cliente cliente = getIntent().getParcelableExtra(ClientesActivity.ARG_CLIENTE);
@@ -49,11 +50,12 @@ public class Cliente_Editar extends AppCompatActivity {
             idcliente = Integer.valueOf(cliente.getIdCliente());
             position = getIntent().getIntExtra(ClientesActivity.ARG_POSITION, -1);
             btacciones.setText("Eliminar");
-            btguardar.setText("Modificar");
+            btguardar.setText("Actualizar");
 
         } else {
 
             btacciones.setVisibility(View.GONE);
+            btVerMapa.setVisibility(View.INVISIBLE);
         }
 
 
