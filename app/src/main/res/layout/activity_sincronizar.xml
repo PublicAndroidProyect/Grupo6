@@ -1,21 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    style="@style/MainContainer">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
+        style="@style/MainContainer">
 
         <Button
             android:id="@+id/btSincronizaProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sincronizar productos" />
+            style="@style/Buttom"
+            android:text="@string/Product_sync" />
 
         <ProgressBar
             android:max="100"
@@ -28,11 +21,9 @@
             />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancelar"
+            style="@style/Buttom"
+            android:text="@string/Product_sync_cancel"
             android:id="@+id/btCancelar"
-            android:layout_gravity="center_horizontal"
             android:visibility="invisible" />
     </LinearLayout>
 

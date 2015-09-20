@@ -77,6 +77,8 @@ public class PedidoActivity extends AppCompatActivity {
         month = cal.get(Calendar.MONTH);
         year = cal.get(Calendar.YEAR);
 
+
+
         spCondicionPago = (Spinner)findViewById(R.id.spCondicionPago);
         adpatadorCondicionPago = new AdaptadorCondicionPago(this, 0,new CondicionPagoDAO().listCondicionPago());
         spCondicionPago.setAdapter(adpatadorCondicionPago);

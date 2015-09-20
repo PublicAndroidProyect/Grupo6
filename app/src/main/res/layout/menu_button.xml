@@ -20,6 +20,12 @@
     <LinearLayout style="@style/MenuContainerOption">
 
         <Button
+            android:id="@+id/btCliente"
+            android:drawableLeft="@drawable/ic_place_black_18dp"
+            android:text="Cliente"
+            style="@style/MenuButton"/>
+
+        <Button
             android:id="@+id/btRegistraPedido"
             android:drawableLeft="@drawable/ic_location_city_black_18dp"
             android:text="@string/MenuClient"
@@ -35,12 +41,6 @@
             android:id="@+id/btSynchronize"
             android:drawableLeft="@drawable/ic_loop_black_18dp"
             android:text="@string/MenuSynchronize"
-            style="@style/MenuButton"/>
-
-        <Button
-            android:id="@+id/btCliente"
-            android:drawableLeft="@drawable/ic_place_black_18dp"
-            android:text="Cliente"
             style="@style/MenuButton"/>
     </LinearLayout>
 </LinearLayout>

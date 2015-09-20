@@ -43,6 +43,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 ARG_OPCION = ARG_OPCION_NUEVOPEDIDO;
 
                 MenuPrincipalActivity.this.startActivity(newIncome);
+                dlmenu.closeDrawer(Gravity.START);
             }
         });
         btPedidos = (Button)findViewById(R.id.btPedidos);
@@ -53,6 +54,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 ARG_OPCION = ARG_OPCION_PEDIDOS;
 
                 MenuPrincipalActivity.this.startActivity(intentPedido);
+                dlmenu.closeDrawer(Gravity.START);
             }
         });
 
@@ -63,8 +65,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 Intent newIncome = new Intent(MenuPrincipalActivity.this,ClientesActivity.class);
                 ARG_OPCION = ARG_OPCION_CLIENTES;
                 MenuPrincipalActivity.this.startActivity(newIncome);
-
-
+                dlmenu.closeDrawer(Gravity.START);
             }
         });
 
@@ -74,6 +75,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentSincroniza = new Intent(MenuPrincipalActivity.this, SincronizarActivity.class);
                 MenuPrincipalActivity.this.startActivity(intentSincroniza);
+                dlmenu.closeDrawer(Gravity.START);
             }
         });
 
@@ -95,17 +97,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         dlmenu.setDrawerListener(actionBarDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-
     }
-    View.OnClickListener tvOnClickListener = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(MenuPrincipalActivity.this, ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-            dlmenu.closeDrawer(Gravity.START);
-        }
-    };
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

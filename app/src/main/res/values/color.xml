@@ -26,7 +26,7 @@
     <color name="MenuButtontextColor">#000000</color>
 
     <color name="CardViewbackground">#FFFFFF</color>
-    <color name="Buttombackground">#FFFFFF</color>
-    <color name="ButtomtextColor">#2196F3</color>
+    <color name="Buttombackground">#2196F3</color>
+    <color name="ButtomtextColor">#FFFFFF</color>
 
 </resources>

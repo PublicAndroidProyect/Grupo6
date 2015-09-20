@@ -9,7 +9,7 @@
 
             <ImageView
                 android:id="@+id/ivProject"
-                android:src="@drawable/logo"
+                android:src="@drawable/client"
                 style="@style/CardViewProjectImagen" />
 
             <TextView
