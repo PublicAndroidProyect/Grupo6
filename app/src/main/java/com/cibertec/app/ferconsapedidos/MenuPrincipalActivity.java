@@ -1,6 +1,7 @@
 package com.cibertec.app.ferconsapedidos;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -28,7 +29,11 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     public final static Integer ARG_OPCION_CLIENTES = 4;
     public final static Integer  ARG_OPCION_PEDIDOS = 2;
     public final static Integer  ARG_OPCION_NUEVOPEDIDO = 1;
+    private SharedPreferences sp;
 
+    private TextView tvNick;
+    public final static String ARG_USER = "arg_user";
+    private final String ARG_PASS = "arg_pass";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +102,15 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         dlmenu.setDrawerListener(actionBarDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        sp = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+
+
+        tvNick = (TextView) findViewById(R.id.tvNick);
+        Intent intent = getIntent();
+        String username = intent.getStringExtra(MenuPrincipalActivity.ARG_USER);
+
+        tvNick.setText(username);
     }
 
     @Override
@@ -130,7 +144,35 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        return super.onOptionsItemSelected(item);
+//        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.idCerrarSesion:
+
+                //   Toast.makeText(MenuPrincipalActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
+
+
+                SharedPreferences.Editor spe = sp.edit();
+                String UserV, PassV;
+                //   UserV = etuser.getText().toString().trim();
+                // PassV = etpassword.getText().toString().trim();
+
+                spe.putString(ARG_USER, "");
+                spe.putString(ARG_PASS, "");
+                spe.commit();
+
+                Intent intent = new Intent(MenuPrincipalActivity.this, LoginActivity.class);
+                //  intent.putExtra(UI_MENU.ARG_USERNAME, UserV);
+
+                startActivity(intent);
+
+                finish();
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 }
 

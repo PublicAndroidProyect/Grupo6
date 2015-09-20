@@ -7,6 +7,7 @@ import android.os.Parcelable;
  * Created by jdiaz on 07/09/2015.
  */
 public class Usuario implements Parcelable {
+
     private int IdUsuario;
     private String NombreUsuario;
     private String Usuario;
@@ -17,6 +18,11 @@ public class Usuario implements Parcelable {
         NombreUsuario = nombreUsuario;
         Usuario = usuario;
         Clave = clave;
+    }
+
+
+    public Usuario() {
+
     }
 
     public int getIdUsuario() {
