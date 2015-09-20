@@ -2,9 +2,11 @@ package com.cibertec.app.ferconsapedidos;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -153,6 +155,7 @@ public class PedidoActivity extends AppCompatActivity {
                     return;
                 }
 
+                //new AlertDialog.Builder(PedidoActivity.this).setTitle("Alert Dialog Accept Cancel").setMessage("Mensaje a su elección").setNegativeButton("Cancelar", alertAcceptCancelCancelOnClickListener).setPositiveButton("Aceptar", alertAcceptCancelAcceptOnClickListener).setCancelable(false).show();
 
                 PedidoCabecera pedidoCabecera = new PedidoCabecera();
                 pedidoCabecera.setIdCliente(IdCliente);
@@ -230,7 +233,22 @@ public class PedidoActivity extends AppCompatActivity {
             }
         });
     }
+    DialogInterface.OnClickListener alertAcceptCancelAcceptOnClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+            dialogInterface.dismiss();
+        }
+    };
 
+    DialogInterface.OnClickListener alertAcceptCancelCancelOnClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+
+            dialogInterface.dismiss();
+
+
+        }
+    };
     AdapterView.OnItemClickListener lvPedidoDetalleOnItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
