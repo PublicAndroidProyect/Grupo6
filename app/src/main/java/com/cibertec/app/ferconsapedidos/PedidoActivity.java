@@ -155,65 +155,9 @@ public class PedidoActivity extends AppCompatActivity {
                     return;
                 }
 
-                //new AlertDialog.Builder(PedidoActivity.this).setTitle("Alert Dialog Accept Cancel").setMessage("Mensaje a su elección").setNegativeButton("Cancelar", alertAcceptCancelCancelOnClickListener).setPositiveButton("Aceptar", alertAcceptCancelAcceptOnClickListener).setCancelable(false).show();
-
-                PedidoCabecera pedidoCabecera = new PedidoCabecera();
-                pedidoCabecera.setIdCliente(IdCliente);
-                pedidoCabecera.setIdUsuario(1);
-                pedidoCabecera.setFechaPedido(tvFechaPedido.getText().toString());
-                pedidoCabecera.setIdCondicionDePago(IdCondicionPago);
-
-                TextView textView = (TextView)spCondicionPago.getSelectedView().findViewById(R.id.tvCondicionPago);
-                String result = textView.getText().toString();
-
-                pedidoCabecera.setCondicionPago(result);
-
-                PedidoCabeceraDAO pedidoCabeceraDAO = new PedidoCabeceraDAO();
-                if (proceso== MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){ //1 Nuevo pedido
-                    IdPedidoCabecera =  pedidoCabeceraDAO.addPedidoCabecera(pedidoCabecera);
-                    MensajeTransaccion ="Se creo el pedido No ";
-                }
-                if (proceso== MenuPrincipalActivity.ARG_OPCION_PEDIDOS){ //Modif pedido
-                    pedidoCabecera.setIdPedidoCabecera(IdPedidoCabecera);
-                    pedidoCabeceraDAO.updatePedidoCabecera(pedidoCabecera);
-                    new PedidoDetalleDAO().deletePedidoCabeceraAll(IdPedidoCabecera);
-                    MensajeTransaccion ="Se actualizo el pedido No ";
-                }
+                new AlertDialog.Builder(PedidoActivity.this).setTitle("Alert Dialog Accept Cancel").setMessage("Mensaje a su elección").setNegativeButton("Cancelar", alertAcceptCancelCancelOnClickListener).setPositiveButton("Aceptar", alertAcceptCancelAcceptOnClickListener).setCancelable(false).show();
 
 
-                ListView lv = (ListView)findViewById(R.id.lvDetallePedido);
-                int count = lv.getAdapter().getCount();
-                PedidoDetalleDAO pedidoDetalleDAO = new PedidoDetalleDAO();
-
-                for (int i = 0; i < count; i++)
-                {
-                    PedidoDetalle itempedidoDetalle =   adapatadorPedidoDetalle.getItem(i);
-
-                    PedidoDetalle pedidoDetalle = new PedidoDetalle();
-                    pedidoDetalle.setUnidad(itempedidoDetalle.getUnidad().toString());
-                    pedidoDetalle.setDescripcionProducto(itempedidoDetalle.getDescripcionProducto().toString());
-                    pedidoDetalle.setCantidad(Double.valueOf(itempedidoDetalle.getCantidad().toString()));
-                    pedidoDetalle.setCodigoProducto(itempedidoDetalle.getCodigoProducto().toString());
-                    pedidoDetalle.setPrecio(Double.valueOf(itempedidoDetalle.getPrecio().toString()));
-                    pedidoDetalle.setIdPedidoCabecera(IdPedidoCabecera);
-                    pedidoDetalle.setIdProducto(Integer.valueOf(itempedidoDetalle.getIdProducto()));
-
-                    pedidoDetalleDAO.addPedidoDetalle(pedidoDetalle);
-
-
-                }
-
-
-                Toast.makeText(PedidoActivity.this, MensajeTransaccion + IdPedidoCabecera, Toast.LENGTH_SHORT).show();
-                if (proceso== MenuPrincipalActivity.ARG_OPCION_PEDIDOS) { //Modifica pedido
-                    Intent i = getIntent();
-                    i.putExtra(PedidoCabeceraActivity.ARG_PEDIDOCABECERA, pedidoCabecera);
-                    i.putExtra(PedidoCabeceraActivity.ARG_POSITION_PEDIDOCABECERA, positionPedidoCabecera);
-                    setResult(RESULT_OK, i);
-
-                }
-
-                finish();
             }
         });
 
@@ -236,7 +180,60 @@ public class PedidoActivity extends AppCompatActivity {
     DialogInterface.OnClickListener alertAcceptCancelAcceptOnClickListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialogInterface, int i) {
-            dialogInterface.dismiss();
+            //dialogInterface.dismiss();
+
+            PedidoCabecera pedidoCabecera = new PedidoCabecera();
+            pedidoCabecera.setIdCliente(IdCliente);
+            pedidoCabecera.setIdUsuario(1);
+            pedidoCabecera.setFechaPedido(tvFechaPedido.getText().toString());
+            pedidoCabecera.setIdCondicionDePago(IdCondicionPago);
+            TextView textView = (TextView)spCondicionPago.getSelectedView().findViewById(R.id.tvCondicionPago);
+            String result = textView.getText().toString();
+            pedidoCabecera.setCondicionPago(result);
+            PedidoCabeceraDAO pedidoCabeceraDAO = new PedidoCabeceraDAO();
+
+            if (proceso== MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){ //1 Nuevo pedido
+                IdPedidoCabecera =  pedidoCabeceraDAO.addPedidoCabecera(pedidoCabecera);
+                MensajeTransaccion ="Se creo el pedido No ";
+            }
+            if (proceso== MenuPrincipalActivity.ARG_OPCION_PEDIDOS){ //Modif pedido
+                pedidoCabecera.setIdPedidoCabecera(IdPedidoCabecera);
+                pedidoCabeceraDAO.updatePedidoCabecera(pedidoCabecera);
+                new PedidoDetalleDAO().deletePedidoCabeceraAll(IdPedidoCabecera);
+                MensajeTransaccion ="Se actualizo el pedido No ";
+            }
+
+            ListView lv = (ListView)findViewById(R.id.lvDetallePedido);
+            int count = lv.getAdapter().getCount();
+            PedidoDetalleDAO pedidoDetalleDAO = new PedidoDetalleDAO();
+
+            for (int j = 0; j < count; j++)
+            {
+                PedidoDetalle itempedidoDetalle =   adapatadorPedidoDetalle.getItem(j);
+                PedidoDetalle pedidoDetalle = new PedidoDetalle();
+                pedidoDetalle.setUnidad(itempedidoDetalle.getUnidad().toString());
+                pedidoDetalle.setDescripcionProducto(itempedidoDetalle.getDescripcionProducto().toString());
+                pedidoDetalle.setCantidad(Double.valueOf(itempedidoDetalle.getCantidad().toString()));
+                pedidoDetalle.setCodigoProducto(itempedidoDetalle.getCodigoProducto().toString());
+                pedidoDetalle.setPrecio(Double.valueOf(itempedidoDetalle.getPrecio().toString()));
+                pedidoDetalle.setIdPedidoCabecera(IdPedidoCabecera);
+                pedidoDetalle.setIdProducto(Integer.valueOf(itempedidoDetalle.getIdProducto()));
+                pedidoDetalleDAO.addPedidoDetalle(pedidoDetalle);
+            }
+
+
+            Toast.makeText(PedidoActivity.this, MensajeTransaccion + IdPedidoCabecera, Toast.LENGTH_SHORT).show();
+            if (proceso== MenuPrincipalActivity.ARG_OPCION_PEDIDOS) { //Modifica pedido
+                Intent intent = getIntent();
+                intent.putExtra(PedidoCabeceraActivity.ARG_PEDIDOCABECERA, pedidoCabecera);
+                intent.putExtra(PedidoCabeceraActivity.ARG_POSITION_PEDIDOCABECERA, positionPedidoCabecera);
+                setResult(RESULT_OK, intent);
+
+            }
+
+            finish();
+
+
         }
     };
 
