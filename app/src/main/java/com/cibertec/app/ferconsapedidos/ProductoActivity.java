@@ -28,6 +28,11 @@ public class ProductoActivity extends AppCompatActivity {
     private ArrayList<Producto> arrayProducto;
     private RecyclerView recViewProducto;
     private EditText etBuscaProducto;
+
+    public final static String ARG_PRODUCTO = "ARG_PRODUCTO";
+    public final static String ARG_POSITION_PRODUCTO = "ARG_POSITION_PRODUCTO";
+    public final static String ARG_PRODUCTO_PEDIDODETALLE= "ARG_PRODUCTO_PEDIDODETALLE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +71,8 @@ public class ProductoActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getBaseContext(), PedidoDetalleNuevoItemActivity.class);
                 Producto producto = arrayProducto.get(itemPosition);
-                intent.putExtra("ARG_PRODUCTO", producto);
-                intent.putExtra("ARG_POSITION", itemPosition);
+                intent.putExtra(ARG_PRODUCTO, producto);
+                intent.putExtra(ARG_POSITION_PRODUCTO, itemPosition);
 
                 startActivityForResult(intent, 22);
             }
@@ -81,11 +86,9 @@ public class ProductoActivity extends AppCompatActivity {
         // si es nuevo
         if (resultCode == RESULT_OK){
 
-            PedidoDetalle pedidoDetalle = data.getParcelableExtra("ARG_PRODUCTO_PEDIDODETALLE");
-            //Toast.makeText(PedidoActivity.this, "Position: " + producto.getCodigoProducto(), Toast.LENGTH_SHORT).show();
-
+            PedidoDetalle pedidoDetalle = data.getParcelableExtra(ARG_PRODUCTO_PEDIDODETALLE);
             Intent i = getIntent();
-            i.putExtra("ARG_PRODUCTO2", pedidoDetalle);
+            i.putExtra(ARG_PRODUCTO, pedidoDetalle);
             setResult(RESULT_OK, i);
             finish();
         }

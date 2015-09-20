@@ -20,7 +20,6 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
     private TextView tvDescripcionProducto;
     private TextView tvUnidadProducto;
     private TextView tvPrecioProducto;
-    private Integer IdProductoProducto;
     private EditText etCantidadProducto;
     private Button btAdicionarProducto;
     private Button btcancelar;
@@ -32,7 +31,7 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_detalle_nuevo_item);
 
-        final Producto producto = getIntent().getParcelableExtra("ARG_PRODUCTO");
+        final Producto producto = getIntent().getParcelableExtra(ProductoActivity.ARG_PRODUCTO);
         tvCodigoProducto = (TextView)findViewById(R.id.tvCodigoProductoEditar);
         tvDescripcionProducto =(TextView)findViewById(R.id.tvDescripcionProductoEditar);
         tvPrecioProducto=(TextView)findViewById(R.id.tvPrecioEditar);
@@ -51,8 +50,8 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 boolean isCorrect = true;
-                tilCantidadProductoNuevo = (TextInputLayout)findViewById(R.id.tilCantidadProductoNuevo);
-                tilCantidadProductoNuevo .setErrorEnabled(false);
+                tilCantidadProductoNuevo = (TextInputLayout) findViewById(R.id.tilCantidadProductoNuevo);
+                tilCantidadProductoNuevo.setErrorEnabled(false);
                 if (tilCantidadProductoNuevo.getEditText().getText().toString().trim().length() <= 0) {
                     tilCantidadProductoNuevo.setError("Ingrese una cantidad");
                     tilCantidadProductoNuevo.setErrorEnabled(true);
@@ -76,7 +75,7 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
                 pedidoDetalle.setIdProducto(Integer.valueOf(producto.getIdProducto()));
 
                 Intent i = getIntent();
-                i.putExtra("ARG_PRODUCTO_PEDIDODETALLE", pedidoDetalle);
+                i.putExtra(ProductoActivity.ARG_PRODUCTO_PEDIDODETALLE, pedidoDetalle);
                 setResult(RESULT_OK, i);
                 finish();
 

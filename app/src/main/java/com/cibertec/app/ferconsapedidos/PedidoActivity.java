@@ -38,7 +38,6 @@ public class PedidoActivity extends AppCompatActivity {
     private FloatingActionButton btAgregarProducto;
     private Button btGrabarPedido;
     private Spinner spCondicionPago;
-    private ImageButton imgCalendario;
     private Calendar cal;
     private int day;
     private int month;
@@ -62,13 +61,15 @@ public class PedidoActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_EDITAR_PRODUCTO_REMUEVE_ITEM = 2;
     public static String REQUEST_CODE_EDITAR_PRODUCTO_REMOVER = "REQUEST_CODE_EDITAR_PRODUCTO_REMOVER";
 
+    public final static String ARG_PRODUCTO_PEDIDODETALLE = "ARG_PRODUCTO_PEDIDODETALLE";
+    public final static String ARG_POSITION_PEDIDODETALLE = "ARG_POSITION_PEDIDODETALLE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_pedido);
         proceso = MenuPrincipalActivity.ARG_OPCION;
-        positionPedidoCabecera = getIntent().getIntExtra("ARG_POSITION_PEDIDOCABECERA",-1);
         cal = Calendar.getInstance();
         day = cal.get(Calendar.DAY_OF_MONTH);
         month = cal.get(Calendar.MONTH);
@@ -94,8 +95,8 @@ public class PedidoActivity extends AppCompatActivity {
         }
 
         if (proceso == MenuPrincipalActivity.ARG_OPCION_PEDIDOS){ //2
-            PedidoCabecera pedidoCabecera = getIntent().getParcelableExtra("ARG_PEDIDOCABECERA");
-
+            PedidoCabecera pedidoCabecera = getIntent().getParcelableExtra(PedidoCabeceraActivity.ARG_PEDIDOCABECERA);
+            positionPedidoCabecera = getIntent().getIntExtra( PedidoCabeceraActivity.ARG_POSITION_PEDIDOCABECERA,-1);
             tvNombreCliente = (TextView)findViewById(R.id.tvNombreClientePedido);
             tvRuc=(TextView)findViewById(R.id.tvRucPedido);
             tvFechaPedido = (TextView)findViewById(R.id.tvFechaPedido);
@@ -201,14 +202,15 @@ public class PedidoActivity extends AppCompatActivity {
 
 
                 Toast.makeText(PedidoActivity.this, MensajeTransaccion + IdPedidoCabecera, Toast.LENGTH_SHORT).show();
-                Intent i = getIntent();
-                i.putExtra("ARG_PEDIDOCABECERA",pedidoCabecera);
-                i.putExtra("ARG_POSITION_PEDIDOCABECERA",positionPedidoCabecera);
+                if (proceso== MenuPrincipalActivity.ARG_OPCION_PEDIDOS) { //Modifica pedido
+                    Intent i = getIntent();
+                    i.putExtra(PedidoCabeceraActivity.ARG_PEDIDOCABECERA, pedidoCabecera);
+                    i.putExtra(PedidoCabeceraActivity.ARG_POSITION_PEDIDOCABECERA, positionPedidoCabecera);
+                    setResult(RESULT_OK, i);
 
-                setResult(RESULT_OK, i);
+                }
+
                 finish();
-
-
             }
         });
 
@@ -235,8 +237,8 @@ public class PedidoActivity extends AppCompatActivity {
 
             Intent intent = new Intent(getBaseContext(), PedidoDetalleEditarItemActivity.class);
             PedidoDetalle pedidoDetalle = adapatadorPedidoDetalle.getItem(position);
-            intent.putExtra("ARG_PRODUCTO_PEDIDODETALLE", pedidoDetalle);
-            intent.putExtra("ARG_POSITION_PEDIDODETALLE", position);
+            intent.putExtra(ARG_PRODUCTO_PEDIDODETALLE, pedidoDetalle);
+            intent.putExtra(ARG_POSITION_PEDIDODETALLE, position);
             startActivityForResult(intent, REQUEST_CODE_EDITAR_PRODUCTO);
 
         }
@@ -252,8 +254,8 @@ public class PedidoActivity extends AppCompatActivity {
 
         if (requestCode==REQUEST_CODE_EDITAR_PRODUCTO){
 
-            PedidoDetalle pedidoDetalle = data.getParcelableExtra("ARG_PRODUCTO_PEDIDODETALLE");
-            int position = data.getIntExtra("ARG_POSITION_PEDIDODETALLE", -1);
+            PedidoDetalle pedidoDetalle = data.getParcelableExtra(ARG_PRODUCTO_PEDIDODETALLE);
+            int position = data.getIntExtra(ARG_POSITION_PEDIDODETALLE, -1);
             int Remover = data.getIntExtra(PedidoActivity.REQUEST_CODE_EDITAR_PRODUCTO_REMOVER, -1);
             if (position != -1) {
 
@@ -275,7 +277,7 @@ public class PedidoActivity extends AppCompatActivity {
         }
         if (requestCode==REQUEST_CODE_NUEVO_PRODUCTO) {
 
-            PedidoDetalle pedidoDetalleAux = data.getParcelableExtra("ARG_PRODUCTO2");
+            PedidoDetalle pedidoDetalleAux = data.getParcelableExtra(ProductoActivity.ARG_PRODUCTO);
 
             if (ExisteProductoPedido(List,pedidoDetalleAux.getCodigoProducto())){
                 Toast.makeText(getApplicationContext(),"Codigo "+pedidoDetalleAux.getCodigoProducto() +" ya existe", Toast.LENGTH_SHORT).show();

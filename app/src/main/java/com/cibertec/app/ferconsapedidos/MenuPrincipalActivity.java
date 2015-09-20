@@ -64,8 +64,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 ARG_OPCION = ARG_OPCION_CLIENTES;
                 MenuPrincipalActivity.this.startActivity(newIncome);
 
-                //Intent newIncome1 = new Intent( MenuPrincipalActivity.this, ClienteDetalle.class);
-                //MenuPrincipalActivity.this.startActivity(newIncome1);
+
             }
         });
 

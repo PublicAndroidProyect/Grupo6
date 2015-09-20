@@ -20,7 +20,6 @@ public class PedidoDetalleEditarItemActivity extends AppCompatActivity {
     private TextView tvDescripcionProducto;
     private TextView tvUnidadProducto;
     private TextView tvPrecioProducto;
-    private Integer IdProductoProducto;
     private EditText etCantidadProducto;
     private Button btEditarProducto;
     private Button btRemoverProducto;
@@ -31,20 +30,18 @@ public class PedidoDetalleEditarItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_detalle_editar_item);
-        final PedidoDetalle producto = getIntent().getParcelableExtra("ARG_PRODUCTO_PEDIDODETALLE");
+        final PedidoDetalle producto = getIntent().getParcelableExtra(PedidoActivity.ARG_PRODUCTO_PEDIDODETALLE);
         tvCodigoProducto = (TextView)findViewById(R.id.tvCodigoProductoEditar);
         tvDescripcionProducto =(TextView)findViewById(R.id.tvDescripcionProductoEditar);
         tvPrecioProducto=(TextView)findViewById(R.id.tvPrecioEditar);
         tvUnidadProducto=(TextView)findViewById(R.id.tvUnidadEditar);
         etCantidadProducto=(EditText)findViewById(R.id.etCantidadProducto);
-
-
         etCantidadProducto.setText(producto.getCantidad().toString());
         tvCodigoProducto.setText(producto.getCodigoProducto());
         tvDescripcionProducto.setText(producto.getDescripcionProducto());
         tvUnidadProducto.setText(producto.getUnidad());
         tvPrecioProducto.setText(producto.getPrecio().toString());
-        position = getIntent().getIntExtra("ARG_POSITION_PEDIDODETALLE", -1);
+        position = getIntent().getIntExtra(PedidoActivity.ARG_POSITION_PEDIDODETALLE, -1);
 
 
         btEditarProducto = (Button)findViewById(R.id.btEditarProducto);
@@ -59,7 +56,11 @@ public class PedidoDetalleEditarItemActivity extends AppCompatActivity {
                     tilCantidadProductoEditar.setErrorEnabled(true);
                     isCorrect = false;
                 }
-
+                if (tilCantidadProductoEditar.getEditText().getText().toString().trim().equals(".")) {
+                    tilCantidadProductoEditar.setError("Ingrese una cantidad");
+                    tilCantidadProductoEditar.setErrorEnabled(true);
+                    isCorrect = false;
+                }
                 if (!isCorrect) {
                     return;
                 }
@@ -73,8 +74,8 @@ public class PedidoDetalleEditarItemActivity extends AppCompatActivity {
                 pedidoDetalle.setIdProducto(Integer.valueOf(producto.getIdProducto()));
 
                 Intent i = getIntent();
-                i.putExtra("ARG_PRODUCTO_PEDIDODETALLE", pedidoDetalle);
-                i.putExtra("ARG_POSITION_PEDIDODETALLE",position);
+                i.putExtra(PedidoActivity.ARG_PRODUCTO_PEDIDODETALLE, pedidoDetalle);
+                i.putExtra(PedidoActivity.ARG_POSITION_PEDIDODETALLE,position);
                 i.putExtra(PedidoActivity.REQUEST_CODE_EDITAR_PRODUCTO_REMOVER,1);
                 setResult(RESULT_OK, i);
                 finish();
@@ -86,8 +87,7 @@ public class PedidoDetalleEditarItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = getIntent();
-                i.putExtra("ARG_POSITION_PEDIDODETALLE",position);
-                i.putExtra("ARG_POSITION_PEDIDODETALLE",position);
+                i.putExtra(PedidoActivity.ARG_POSITION_PEDIDODETALLE,position);
                 i.putExtra(PedidoActivity.REQUEST_CODE_EDITAR_PRODUCTO_REMOVER,2);
                 setResult(RESULT_OK, i);
                 finish();

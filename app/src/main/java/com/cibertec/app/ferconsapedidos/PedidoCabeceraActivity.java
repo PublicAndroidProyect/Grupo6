@@ -26,6 +26,11 @@ public class PedidoCabeceraActivity extends AppCompatActivity {
     ListView ListPedidoCabecera;
     AdaptadorCabeceraPedido adpatadorPedidoCabecera;
     ArrayList<PedidoCabecera>  arrayPedidoCabecera;
+    public final static String ARG_PEDIDOCABECERA = "ARG_PEDIDOCABECERA";
+    public final static String ARG_POSITION_PEDIDOCABECERA = "ARG_POSITION_PEDIDOCABECERA";
+    public final static String ARG_EDICION = "ARG_EDICION";
+
+
 
     EditText etBuscaPedido;
     @Override
@@ -66,10 +71,10 @@ public class PedidoCabeceraActivity extends AppCompatActivity {
 
             PedidoCabecera pedidoCabecera =  adpatadorPedidoCabecera.getItem(position);
             Intent intent = new Intent(getBaseContext(),PedidoActivity.class);
-            intent.putExtra("ARG_PEDIDOCABECERA",  pedidoCabecera);
-            intent.putExtra("ARG_POSITION_PEDIDOCABECERA", position);
-            intent.putExtra("ARG_EDICION", "EDITAR");
-            //startActivity(intent);
+            intent.putExtra(ARG_PEDIDOCABECERA ,  pedidoCabecera);
+            intent.putExtra(ARG_POSITION_PEDIDOCABECERA , position);
+            intent.putExtra(ARG_EDICION, "EDITAR");
+
             startActivityForResult(intent,12);
         }
     };
