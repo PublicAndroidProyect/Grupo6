@@ -28,13 +28,14 @@ public class ClienteDAO {
                     cliente.setRUC(cursor.isNull(cursor.getColumnIndex("RUC")) ? "" : cursor.getString(cursor.getColumnIndex("RUC")));
                     cliente.setIdCliente(cursor.isNull(cursor.getColumnIndex("IdCliente")) ? 0 : cursor.getInt(cursor.getColumnIndex("IdCliente")));
                     cliente.setTelefono(cursor.isNull(cursor.getColumnIndex("Telefono")) ? "" : cursor.getString(cursor.getColumnIndex("Telefono")));
-                    //cliente.setDNI(cursor.isNull(cursor.getColumnIndex("DNI")) ? "" : cursor.getString(cursor.getColumnIndex("DNI")));
-                    //Log.v("hh", String.valueOf(lstPersona.size()));
+                    cliente.setLatitud(cursor.isNull(cursor.getColumnIndex("Latitud")) ? 0 : cursor.getDouble(cursor.getColumnIndex("Latitud")));
+                    cliente.setLongitud(cursor.isNull(cursor.getColumnIndex("Longitud")) ? 0 : cursor.getDouble(cursor.getColumnIndex("Longitud")));
+
                     lstPersona.add(cliente);
                 } while (cursor.moveToNext());
             }
         } catch (Exception ex) {
-            Log.v("hh", String.valueOf(lstPersona.size()));
+
             ex.printStackTrace();
         } finally {
             if (cursor != null)
@@ -52,7 +53,7 @@ public class ClienteDAO {
             cv.put("Direccion", cliente.getDireccion());
             cv.put("RUC", cliente.getRUC());
             cv.put("Telefono", cliente.getTelefono());
-            //cv.put("Telefono", cliente.getDNI());
+
             idcliente =    DataBaseHelper.myDataBase.insert("Cliente", null, cv);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -67,7 +68,7 @@ public class ClienteDAO {
             cv.put("Direccion", cliente.getDireccion());
             cv.put("RUC", cliente.getRUC());
             cv.put("Telefono", cliente.getTelefono());
-            //cv.put("Telefono", cliente.getDNI());
+
             DataBaseHelper.myDataBase.update("Cliente", cv, "IdCliente = ?", new String[]{String.valueOf(cliente.getIdCliente())});
         } catch (Exception ex) {
             ex.printStackTrace();

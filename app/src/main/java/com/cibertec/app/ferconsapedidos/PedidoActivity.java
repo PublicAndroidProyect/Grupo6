@@ -55,20 +55,12 @@ public class PedidoActivity extends AppCompatActivity {
     AdaptadorPedidoDetalle adapatadorPedidoDetalle;
     ArrayList<PedidoDetalle> ArrayPedidoDetalle;
     AdaptadorCondicionPago adpatadorCondicionPago;
-    ArrayList<CondicionPago> arrayCondicionPago;
 
     private final static int REQUEST_CODE_NUEVO_PRODUCTO = 11;
     private final static int REQUEST_CODE_EDITAR_PRODUCTO = 4;
     private final static int REQUEST_CODE_EDITAR_PRODUCTO_MODIFICA_ITEM = 1;
     private final static int REQUEST_CODE_EDITAR_PRODUCTO_REMUEVE_ITEM = 2;
     public static String REQUEST_CODE_EDITAR_PRODUCTO_REMOVER = "REQUEST_CODE_EDITAR_PRODUCTO_REMOVER";
-
-    //public static String ARG_POSITION_PEDIDOCABECERA = "ARG_POSITION_PEDIDOCABECERA";
-    //public static String ARG_PEDIDOCABECERA = "ARG_PEDIDOCABECERA";
-    //public static String ARG_PRODUCTO_PEDIDODETALLE = "ARG_PRODUCTO_PEDIDODETALLE";
-    //public static String ARG_POSITION_PEDIDODETALLE = "ARG_POSITION_PEDIDODETALLE";
-
-
 
 
     @Override

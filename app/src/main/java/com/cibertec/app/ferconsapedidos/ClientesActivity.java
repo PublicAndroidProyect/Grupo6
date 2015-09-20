@@ -28,11 +28,11 @@ public class ClientesActivity extends AppCompatActivity {
     private ArrayList<Cliente> arrayCliente;
     private RecyclerView recViewCliente;
     private EditText etBuscaCliente;
-    public final static String ARG_CLIENTE = "persona", ARG_POSITION = "position";
-    public final static String ARG_IDCLIENTE = "arg_idcliente";
+    public final static String ARG_CLIENTE = "ARG_CLIENTE", ARG_POSITION = "ARG_POSITION";
+    public final static String ARG_IDCLIENTE = "ARG_IDCLIENTE";
     private final static int REQUEST_CODE_CLICK = 3;
     private final static int REQUEST_CODE = 1;
-    private ClienteDAO MClienteDAO;
+    private ClienteDAO mClienteDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +44,8 @@ public class ClientesActivity extends AppCompatActivity {
         arrayCliente = new ClienteDAO().listCliente();
         adaptadorCliente = new AdaptadorCliente(arrayCliente);
         recViewCliente.setAdapter(adaptadorCliente);
-        MClienteDAO = new ClienteDAO();
-
+        mClienteDAO = new ClienteDAO();
         recViewCliente.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-
-
         etBuscaCliente = (EditText) findViewById(R.id.etBuscarCliente);
         etBuscaCliente.addTextChangedListener(new TextWatcher() {
             @Override
@@ -76,7 +72,7 @@ public class ClientesActivity extends AppCompatActivity {
                     Cliente cliente = arrayCliente.get(itemPosition);
                     Intent intent = new Intent(getBaseContext(), PedidoActivity.class);
                     intent.putExtra(ARG_CLIENTE, cliente);
-                    intent.putExtra("ARG_POSITION", itemPosition);
+                    intent.putExtra(ARG_POSITION, itemPosition);
                     startActivity(intent);
                 }
                 if (MenuPrincipalActivity.ARG_OPCION==MenuPrincipalActivity.ARG_OPCION_CLIENTES){
@@ -133,15 +129,15 @@ public class ClientesActivity extends AppCompatActivity {
 
             startActivity(intent);
 
-            //   return true;
+
         }
-        //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_add) {
             Intent intent = new Intent(getBaseContext(), Cliente_Editar.class);
 
             startActivityForResult(intent, REQUEST_CODE);
 
-            //   return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -155,13 +151,12 @@ public class ClientesActivity extends AppCompatActivity {
 
             Cliente cliente = data.getParcelableExtra(ARG_CLIENTE);
 
-
-            int idcli = MClienteDAO.addCliente(cliente);
+            int idcli = mClienteDAO.addCliente(cliente);
             cliente.setIdCliente(idcli);
 
             adaptadorCliente.add(cliente);
+            adaptadorCliente.notifyDataSetChanged();
 
-//            mLVPrincipalAdapter.notifyDataSetChanged();
         }
         if (requestCode == REQUEST_CODE_CLICK && resultCode == 44) {
 
@@ -170,19 +165,18 @@ public class ClientesActivity extends AppCompatActivity {
             Cliente cliente = data.getParcelableExtra(ARG_CLIENTE);
             if (position != -1) {
                 adaptadorCliente.remove(position);
-                MClienteDAO.deleteCliente(cliente);
+                mClienteDAO.deleteCliente(cliente);
             }
 
-//            mLVPrincipalAdapter.notifyDataSetChanged();
+             adaptadorCliente.notifyDataSetChanged();
+
         } else if (requestCode == REQUEST_CODE_CLICK && resultCode == RESULT_OK) {
             int position = data.getIntExtra(ARG_POSITION, -1);
             Cliente cliente = data.getParcelableExtra(ARG_CLIENTE);
 
-
-
             if (position != -1) {
                 adaptadorCliente.update(cliente, position);
-                MClienteDAO.updateCliente(cliente);
+                mClienteDAO.updateCliente(cliente);
             }
         }
 

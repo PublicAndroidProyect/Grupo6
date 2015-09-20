@@ -49,7 +49,7 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
         btAdicionarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //etCantidadProducto = (EditText)findViewById(R.id.etCantidadProducto);
+
                 boolean isCorrect = true;
                 tilCantidadProductoNuevo = (TextInputLayout)findViewById(R.id.tilCantidadProductoNuevo);
                 tilCantidadProductoNuevo .setErrorEnabled(false);
@@ -58,7 +58,11 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
                     tilCantidadProductoNuevo.setErrorEnabled(true);
                     isCorrect = false;
                 }
-
+                if (tilCantidadProductoNuevo.getEditText().getText().toString().trim().equals(".")) {
+                    tilCantidadProductoNuevo.setError("Ingrese una cantidad");
+                    tilCantidadProductoNuevo.setErrorEnabled(true);
+                    isCorrect = false;
+                }
                 if (!isCorrect) {
                     return;
                 }

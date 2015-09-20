@@ -26,7 +26,6 @@ public class Cliente_Editar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente__editar);
 
-
         tilcliente = (TextInputLayout) findViewById(R.id.tilcliente);
         tilRUC = (TextInputLayout) findViewById(R.id.tilRUC);
         tilDireccion = (TextInputLayout) findViewById(R.id.tilDireccion);
