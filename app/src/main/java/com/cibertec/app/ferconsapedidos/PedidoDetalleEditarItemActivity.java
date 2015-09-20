@@ -30,6 +30,7 @@ public class PedidoDetalleEditarItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_detalle_editar_item);
+        this.setTitle("Pedido - Editar Item");
         final PedidoDetalle producto = getIntent().getParcelableExtra(PedidoActivity.ARG_PRODUCTO_PEDIDODETALLE);
         tvCodigoProducto = (TextView)findViewById(R.id.tvCodigoProductoEditar);
         tvDescripcionProducto =(TextView)findViewById(R.id.tvDescripcionProductoEditar);
@@ -57,6 +58,11 @@ public class PedidoDetalleEditarItemActivity extends AppCompatActivity {
                     isCorrect = false;
                 }
                 if (tilCantidadProductoEditar.getEditText().getText().toString().trim().equals(".")) {
+                    tilCantidadProductoEditar.setError("Ingrese una cantidad");
+                    tilCantidadProductoEditar.setErrorEnabled(true);
+                    isCorrect = false;
+                }
+                if ( Double.valueOf(tilCantidadProductoEditar.getEditText().getText().toString().trim()) <= 0 ) {
                     tilCantidadProductoEditar.setError("Ingrese una cantidad");
                     tilCantidadProductoEditar.setErrorEnabled(true);
                     isCorrect = false;

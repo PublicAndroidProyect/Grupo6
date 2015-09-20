@@ -30,7 +30,7 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_detalle_nuevo_item);
-
+        this.setTitle("Pedido - Nuevo Item");
         final Producto producto = getIntent().getParcelableExtra(ProductoActivity.ARG_PRODUCTO);
         tvCodigoProducto = (TextView)findViewById(R.id.tvCodigoProductoEditar);
         tvDescripcionProducto =(TextView)findViewById(R.id.tvDescripcionProductoEditar);
@@ -58,6 +58,11 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
                     isCorrect = false;
                 }
                 if (tilCantidadProductoNuevo.getEditText().getText().toString().trim().equals(".")) {
+                    tilCantidadProductoNuevo.setError("Ingrese una cantidad");
+                    tilCantidadProductoNuevo.setErrorEnabled(true);
+                    isCorrect = false;
+                }
+                if ( Double.valueOf(tilCantidadProductoNuevo.getEditText().getText().toString().trim()) <= 0 ) {
                     tilCantidadProductoNuevo.setError("Ingrese una cantidad");
                     tilCantidadProductoNuevo.setErrorEnabled(true);
                     isCorrect = false;

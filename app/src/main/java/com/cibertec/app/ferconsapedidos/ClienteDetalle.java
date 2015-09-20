@@ -31,7 +31,7 @@ public class ClienteDetalle extends AppCompatActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente_detalle);
-        Cliente cliente = getIntent().getParcelableExtra("ARG_CLIENTE");
+        Cliente cliente = getIntent().getParcelableExtra(ClientesActivity.ARG_CLIENTE);
         tvNombreCliente = (TextView)findViewById(R.id.tvNombreClente);
         tvDireccion = (TextView)findViewById(R.id.tvDireccion);
         tvRuc = (TextView)findViewById(R.id.tvRUC);

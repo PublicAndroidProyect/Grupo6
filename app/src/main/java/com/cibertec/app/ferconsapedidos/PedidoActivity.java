@@ -77,8 +77,6 @@ public class PedidoActivity extends AppCompatActivity {
         month = cal.get(Calendar.MONTH);
         year = cal.get(Calendar.YEAR);
 
-
-
         spCondicionPago = (Spinner)findViewById(R.id.spCondicionPago);
         adpatadorCondicionPago = new AdaptadorCondicionPago(this, 0,new CondicionPagoDAO().listCondicionPago());
         spCondicionPago.setAdapter(adpatadorCondicionPago);
@@ -99,6 +97,7 @@ public class PedidoActivity extends AppCompatActivity {
         }
 
         if (proceso == MenuPrincipalActivity.ARG_OPCION_PEDIDOS){ //2
+            this.setTitle("Editar Pedido");
             PedidoCabecera pedidoCabecera = getIntent().getParcelableExtra(PedidoCabeceraActivity.ARG_PEDIDOCABECERA);
             positionPedidoCabecera = getIntent().getIntExtra( PedidoCabeceraActivity.ARG_POSITION_PEDIDOCABECERA,-1);
             tvNombreCliente = (TextView)findViewById(R.id.tvNombreClientePedido);
@@ -156,8 +155,9 @@ public class PedidoActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Debe ingresar un producto ", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                new AlertDialog.Builder(PedidoActivity.this).setTitle("Alert Dialog Accept Cancel").setMessage("Mensaje a su elección").setNegativeButton("Cancelar", alertAcceptCancelCancelOnClickListener).setPositiveButton("Aceptar", alertAcceptCancelAcceptOnClickListener).setCancelable(false).show();
+                String MensajeTituloDialogPedido = proceso == MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO ? "Registrar Nuevo Pedido" : "Editar Pedido";
+                String MensajeContenidoDialogPedido = proceso == MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO ? "Se enviara el pedido del cliente : "+tvNombreCliente.getText(): "Se actualizara el pedido No"+String.valueOf(IdPedidoCabecera);
+                new AlertDialog.Builder(PedidoActivity.this).setTitle(MensajeTituloDialogPedido).setMessage(MensajeContenidoDialogPedido ).setNegativeButton("Cancelar", alertAcceptCancelCancelOnClickListener).setPositiveButton("Aceptar", alertAcceptCancelAcceptOnClickListener).setCancelable(false).show();
 
 
             }
@@ -182,7 +182,7 @@ public class PedidoActivity extends AppCompatActivity {
     DialogInterface.OnClickListener alertAcceptCancelAcceptOnClickListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialogInterface, int i) {
-            //dialogInterface.dismiss();
+
 
             PedidoCabecera pedidoCabecera = new PedidoCabecera();
             pedidoCabecera.setIdCliente(IdCliente);
