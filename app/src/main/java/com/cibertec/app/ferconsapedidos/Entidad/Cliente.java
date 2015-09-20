@@ -9,6 +9,21 @@ import android.os.Parcelable;
 public class Cliente implements Parcelable {
     public Cliente() {
     }
+    private int IdCliente;
+    private  String  NombreCliente;
+    private String RUC ;
+    private String Direccion;
+    private String Telefono;
+    private Double Latitud;
+    private Double Longitud;
+
+    public Double getLatitud() {        return Latitud;    }
+
+    public void setLatitud(Double latitud) {        Latitud = latitud;    }
+
+    public Double getLongitud() {        return Longitud;    }
+
+    public void setLongitud(Double longitud) {        Longitud = longitud;    }
 
     public int getIdCliente() {
         return IdCliente;
@@ -50,11 +65,7 @@ public class Cliente implements Parcelable {
         Telefono = telefono;
     }
 
-    private int IdCliente;
-    private  String  NombreCliente;
-    private String RUC ;
-    private String Direccion;
-    private String Telefono;
+
 
 
     @Override
@@ -69,6 +80,8 @@ public class Cliente implements Parcelable {
         RUC = in.readString();
         Direccion = in.readString();
         Telefono = in.readString();
+        Latitud = in.readByte() == 0x00 ? null : in.readDouble();
+        Longitud =   in.readByte() == 0x00 ? null : in.readDouble();
     }
 
     @Override
@@ -83,6 +96,18 @@ public class Cliente implements Parcelable {
         dest.writeString(RUC);
         dest.writeString(Direccion);
         dest.writeString(Telefono);
+        if ( Latitud == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeDouble(Latitud);
+        }
+        if ( Longitud == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeDouble(Longitud);
+        }
     }
 
     @SuppressWarnings("unused")
