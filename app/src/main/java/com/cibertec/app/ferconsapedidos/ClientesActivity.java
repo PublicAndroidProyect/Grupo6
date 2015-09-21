@@ -155,7 +155,10 @@ public class ClientesActivity extends AppCompatActivity {
             cliente.setIdCliente(idcli);
 
             adaptadorCliente.add(cliente);
+            adaptadorCliente = new AdaptadorCliente(arrayCliente);
+            recViewCliente.setAdapter(adaptadorCliente);
             adaptadorCliente.notifyDataSetChanged();
+
 
         }
         if (requestCode == REQUEST_CODE_CLICK && resultCode == 44) {
