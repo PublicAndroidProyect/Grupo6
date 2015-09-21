@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,8 +15,8 @@ import com.cibertec.app.ferconsapedidos.Entidad.Cliente;
 
 public class Cliente_Editar extends AppCompatActivity {
 
-    private TextInputLayout tilcliente, tilRUC, tilDireccion, tilTelf;
-    private EditText etcliente, etRUC, etDireccion, etTelf;
+    private TextInputLayout tilcliente, tilRUC, tilDireccion, tilTelf ,tilLatitud,tilLongitud ;
+    private EditText etcliente, etRUC, etDireccion, etTelf,etLatitud,etLongitud;
     private Button btacciones, btguardar;
 
     private int position = -1;
@@ -26,19 +27,19 @@ public class Cliente_Editar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente__editar);
 
-        //this.setTitle("My Title");
-
-
-
         tilcliente = (TextInputLayout) findViewById(R.id.tilcliente);
         tilRUC = (TextInputLayout) findViewById(R.id.tilRUC);
         tilDireccion = (TextInputLayout) findViewById(R.id.tilDireccion);
         tilTelf = (TextInputLayout) findViewById(R.id.tilTelf);
+        tilLatitud =(TextInputLayout) findViewById(R.id.tilLatitud);
+        tilLongitud=(TextInputLayout) findViewById(R.id.tilLongitud);
 
         etcliente = (EditText) findViewById(R.id.etcliente);
         etRUC = (EditText) findViewById(R.id.etRUC);
         etDireccion = (EditText) findViewById(R.id.etDireccion);
         etTelf = (EditText) findViewById(R.id.etTelf);
+        etLatitud=(EditText) findViewById(R.id.etLatitud);
+        etLongitud=(EditText) findViewById(R.id.etLongitud);
 
         btacciones = (Button) findViewById(R.id.btacciones);
         btguardar = (Button) findViewById(R.id.btguardar);
@@ -50,14 +51,17 @@ public class Cliente_Editar extends AppCompatActivity {
             etRUC.setText(cliente.getRUC());
             etDireccion.setText(String.valueOf(cliente.getDireccion()));
             etTelf.setText(String.valueOf(cliente.getTelefono()));
+            etLatitud.setText(String.valueOf(cliente.getLatitud()));
+            etLongitud.setText(String.valueOf(cliente.getLongitud()));
             idcliente = Integer.valueOf(cliente.getIdCliente());
             position = getIntent().getIntExtra(ClientesActivity.ARG_POSITION, -1);
-            btacciones.setText("Eliminar");
+            btacciones.setText("Cancelar");
             btguardar.setText("Actualizar");
             this.setTitle("Cliente - Editar registro");
         } else {
             this.setTitle("Cliente - Nuevo registro");
             btacciones.setVisibility(View.GONE);
+            etLongitud.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
 
         }
 
@@ -123,6 +127,19 @@ public class Cliente_Editar extends AppCompatActivity {
             tilRUC.setErrorEnabled(false);
             tilDireccion.setErrorEnabled(false);
             tilTelf.setErrorEnabled(false);
+            tilLatitud.setErrorEnabled(false);
+            tilLongitud.setErrorEnabled(false);
+
+
+            //try{
+
+             // Float retorno =  Float.parseFloat(etLongitud.getText().toString());
+
+            //}catch(NumberFormatException e){
+
+              //  isComplete = false;
+              //  tilLongitud.setError("Formato Longitud incorrecto");
+           // }
 
             if (etcliente.getText().toString().trim().length() <= 0) {
                 tilcliente.setErrorEnabled(true);
@@ -148,6 +165,16 @@ public class Cliente_Editar extends AppCompatActivity {
                 isComplete = false;
             }
 
+            if (etLatitud.getText().toString().trim().length() <= 0) {
+                tilTelf.setErrorEnabled(true);
+                tilTelf.setError("Ingrese el dato de Latitud");
+                isComplete = false;
+            }
+            if (etLongitud.getText().toString().trim().length() <= 0) {
+                tilTelf.setErrorEnabled(true);
+                tilTelf.setError("Ingrese el dato de Longitud");
+                isComplete = false;
+            }
             if (isComplete) {
 
                 Cliente cliente = new Cliente();
@@ -156,6 +183,8 @@ public class Cliente_Editar extends AppCompatActivity {
                 cliente.setRUC(etRUC.getText().toString().trim());
                 cliente.setDireccion(etDireccion.getText().toString().trim());
                 cliente.setTelefono(etTelf.getText().toString().trim());
+                cliente.setLatitud(Double.valueOf(etLatitud.getText().toString().trim()));
+                cliente.setLongitud(Double.valueOf(etLongitud.getText().toString().trim()));
 
                 Intent intent = new Intent();
                 intent.putExtra(ClientesActivity.ARG_CLIENTE, cliente);

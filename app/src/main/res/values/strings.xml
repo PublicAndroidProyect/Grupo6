@@ -31,6 +31,8 @@
     <string name="Client_RUC">RUC</string>
     <string name="Client_address">Dirección</string>
     <string name="Client_phone">Teléfono</string>
+    <string name="Client_Latitud">Latitud</string>
+    <string name="Client_Longitud">Longitud</string>
     <string name="Product_sync">Sincronizar productos</string>
     <string name="Product_sync_cancel">Sincronizar productos</string>
 

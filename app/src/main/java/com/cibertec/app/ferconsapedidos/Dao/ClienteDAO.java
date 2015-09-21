@@ -53,6 +53,8 @@ public class ClienteDAO {
             cv.put("Direccion", cliente.getDireccion());
             cv.put("RUC", cliente.getRUC());
             cv.put("Telefono", cliente.getTelefono());
+            cv.put("Latitud",cliente.getLatitud());
+            cv.put("Longitud",cliente.getLongitud());
 
             idcliente =    DataBaseHelper.myDataBase.insert("Cliente", null, cv);
         } catch (Exception ex) {
@@ -68,6 +70,8 @@ public class ClienteDAO {
             cv.put("Direccion", cliente.getDireccion());
             cv.put("RUC", cliente.getRUC());
             cv.put("Telefono", cliente.getTelefono());
+            cv.put("Latitud",cliente.getLatitud());
+            cv.put("Longitud",cliente.getLongitud());
 
             DataBaseHelper.myDataBase.update("Cliente", cv, "IdCliente = ?", new String[]{String.valueOf(cliente.getIdCliente())});
         } catch (Exception ex) {

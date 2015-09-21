@@ -41,7 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="left"
+
                 android:text="@string/Order_condition"
                 style="@style/TextView"/>
 
@@ -49,7 +49,8 @@
                 android:id="@+id/spCondicionPago"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
+                android:gravity="right"
                 android:textSize="30px" />
         </LinearLayout>
 
@@ -74,8 +75,8 @@
                 android:id="@+id/tvFechaPedido"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_weight="2"
+
                 android:textColor="@color/AppThemecolorAccent"
                 style="@style/TextView" />
         </LinearLayout>
@@ -156,6 +157,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:gravity="right"
             android:text="@string/Order_total" />
 
         <TextView
@@ -170,11 +172,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            />
         <Button
             android:id="@+id/btGrabarPedido"
             style="@style/Buttom"
+            android:layout_width="match_parent"
             android:text="Grabar" />
 
     </LinearLayout>

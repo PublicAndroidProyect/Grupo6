@@ -164,8 +164,8 @@ public class ClientesActivity extends AppCompatActivity {
 
             Cliente cliente = data.getParcelableExtra(ARG_CLIENTE);
             if (position != -1) {
-                adaptadorCliente.remove(position);
-                mClienteDAO.deleteCliente(cliente);
+                //adaptadorCliente.remove(position);
+                //mClienteDAO.deleteCliente(cliente);
             }
 
              adaptadorCliente.notifyDataSetChanged();
@@ -176,7 +176,11 @@ public class ClientesActivity extends AppCompatActivity {
 
             if (position != -1) {
                 adaptadorCliente.update(cliente, position);
+
                 mClienteDAO.updateCliente(cliente);
+                adaptadorCliente.notifyDataSetChanged();
+                //adaptadorCliente = new AdaptadorCliente(arrayCliente);
+                //recViewCliente.setAdapter(adaptadorCliente);
             }
         }
 

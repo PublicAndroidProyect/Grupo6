@@ -144,6 +144,8 @@ public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.Clie
         clienteold.setDireccion(cliente.getDireccion());
         clienteold.setRUC(cliente.getRUC());
         clienteold.setTelefono(cliente.getTelefono());
+        clienteold.setLongitud(cliente.getLongitud());
+        clienteold.setLatitud(cliente.getLatitud());
         notifyItemChanged(position);
     }
 

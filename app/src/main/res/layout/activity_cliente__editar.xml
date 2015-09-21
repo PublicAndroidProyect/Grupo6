@@ -27,7 +27,8 @@
             style="@style/EditText"
             android:hint="@string/Client_RUC"
             android:inputType="number"
-            android:maxLength="8" />
+            android:maxLength="11"
+            android:longClickable="true" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -52,8 +53,26 @@
             android:inputType="text" />
     </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilLatitud"
+        style="@style/TextInputLayout">
 
+        <EditText
+            android:id="@+id/etLatitud"
+            style="@style/EditText"
+            android:hint="@string/Client_Latitud"
+            android:inputType="text|numberDecimal|numberSigned" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilLongitud"
+        style="@style/TextInputLayout">
 
+        <EditText
+            android:id="@+id/etLongitud"
+            style="@style/EditText"
+            android:hint="@string/Client_Longitud"
+            android:inputType="text|numberDecimal|numberSigned" />
+    </android.support.design.widget.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
