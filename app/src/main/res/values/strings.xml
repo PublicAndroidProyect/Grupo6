@@ -6,7 +6,7 @@
     <string name="Login_button">INGRESAR</string>
     <string name="Search_Client">Buscar cliente por Razón Social / RUC</string>
     <string name="Order_detail">Detalle Pedido</string>
-    <string name="Order_code">Codigo</string>
+    <string name="Order_code">Código</string>
     <string name="Order_unit">Uni</string>
     <string name="Order_product">Producto</string>
     <string name="Order_amount">Cantidad</string>
@@ -85,7 +85,7 @@
     <string name="title_activity_pedido_cabecera">Listar Pedidos</string>
 
 
-    <string name="SearchProduct">Buscar Descripcion o Codigo</string>
+    <string name="SearchProduct">Buscar Descripción o Código</string>
     <string name="title_activity_cliente_detalle">Detalle de cliente</string>
     <string name="title_activity_sincronizar">Sincronizar</string>
 </resources>

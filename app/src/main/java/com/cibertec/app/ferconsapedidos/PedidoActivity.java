@@ -281,7 +281,7 @@ public class PedidoActivity extends AppCompatActivity {
                     old.setCantidad(Double.valueOf(pedidoDetalle.getCantidad()));
                     adapatadorPedidoDetalle.notifyDataSetChanged();
                 }
-                if (Remover== REQUEST_CODE_EDITAR_PRODUCTO_REMUEVE_ITEM){ //Remover item 2
+                if (Remover== REQUEST_CODE_EDITAR_PRODUCTO_REMUEVE_ITEM){ //Remover
 
                     adapatadorPedidoDetalle.remove(adapatadorPedidoDetalle.getItem(position));
                     adapatadorPedidoDetalle.notifyDataSetChanged();
@@ -297,7 +297,7 @@ public class PedidoActivity extends AppCompatActivity {
             PedidoDetalle pedidoDetalleAux = data.getParcelableExtra(ProductoActivity.ARG_PRODUCTO);
 
             if (ExisteProductoPedido(List,pedidoDetalleAux.getCodigoProducto())){
-                Toast.makeText(getApplicationContext(),"Codigo "+pedidoDetalleAux.getCodigoProducto() +" ya existe", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Código "+pedidoDetalleAux.getCodigoProducto() +" ya existe", Toast.LENGTH_SHORT).show();
                 return;
 
             }

@@ -7,7 +7,7 @@
     <string name="action_login_adicionar">Adicionar</string>
     <!-- toolbar menu principal -->
     <string name="action_menupri_login">Login</string>
-    <string name="action_menupri_cerrarapp">Cerrar aplicacion</string>
+    <string name="action_menupri_cerrarapp">Cerrar aplicación</string>
     <!-- botones de accion de toolbar -->
     <string name="subtitulo_activity_login">Login</string>
     <string name="subtitulo_activity_menuprincipal">Menu Principal</string>

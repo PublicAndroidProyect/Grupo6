@@ -36,11 +36,7 @@ public class PedidoCabecera implements Parcelable {
     }
 
     public PedidoCabecera() {
-        //int idPedidoCabecera, int idCondicionDePago, int idCliente, String fechaPedido
-        //IdPedidoCabecera = idPedidoCabecera;
-        //IdCondicionDePago = idCondicionDePago;
-        //IdCliente = idCliente;
-        //FechaPedido = fechaPedido;
+
     }
 
     @Override

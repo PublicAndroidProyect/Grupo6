@@ -196,7 +196,7 @@ public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.Clie
 
                datos.add(fitems.get(i));
             }
-            //notifyDataSetInvalidated();
+
 
 
 

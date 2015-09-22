@@ -167,8 +167,7 @@ public class ClientesActivity extends AppCompatActivity {
 
                 mClienteDAO.updateCliente(cliente);
                 adaptadorCliente.notifyDataSetChanged();
-                //adaptadorCliente = new AdaptadorCliente(arrayCliente);
-                //recViewCliente.setAdapter(adaptadorCliente);
+
             }
         }
 

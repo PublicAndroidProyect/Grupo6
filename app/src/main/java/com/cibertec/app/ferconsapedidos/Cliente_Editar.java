@@ -205,7 +205,7 @@ public class Cliente_Editar extends AppCompatActivity {
     };
 
     public class CadenaDecimal {
-        //Devuelve true si la cadena que llega tiene la sintaxis de un decimal
+
         public boolean esDecimal(String cad) {
             boolean hayPunto = false ,hayRaya=false ,hayMas=false;
             StringBuffer parteEntera = new StringBuffer();
@@ -216,17 +216,17 @@ public class Cliente_Editar extends AppCompatActivity {
             if (cad.equals(".")){return false;}
 
             for (i = 0; i < cad.length(); i++) {
-                if (cad.charAt(i) == '.')                          //Detectar si hay un punto decimal en la cadena
+                if (cad.charAt(i) == '.')
                 {
                     hayPunto = true;
                     contPunto++;
                 }
-                if (cad.charAt(i) == '-')                          //Detectar si hay un punto decimal en la cadena
+                if (cad.charAt(i) == '-')
                 {
                     hayRaya = true;
                     contRaya++;
                 }
-                if (cad.charAt(i) == '+')                          //Detectar si hay un punto decimal en la cadena
+                if (cad.charAt(i) == '+')
                 {
                     hayMas = true;
                     contMas++;

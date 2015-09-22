@@ -70,17 +70,16 @@ public class LoginActivity extends AppCompatActivity {
         btAcceder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent newIncome = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
-//                startActivity(newIncome);
+
                 Usuario user = new Usuario();
                 user.setUsuario(etUser.getText().toString().trim());
                 user.setClave(etPassword.getText().toString().trim());
 
-                //  Log.v("activity_ui__login", "Usuario logeado");
+
                 ArrayList<Usuario> UserList = MUsuarioDAO.ListOneUser(user);
                 if (UserList.size() == 0) {
 
-                    //   Log.v("activity_ui__login", "Usuario finalmente logeado");
+
                     Toast.makeText(LoginActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -92,11 +91,6 @@ public class LoginActivity extends AppCompatActivity {
                 UserV = etUser.getText().toString().trim();
                 PassV = etPassword.getText().toString().trim();
 
-//                UserV = Base64.encodeToString(UserV.getBytes(), Base64.DEFAULT);
-//                PassV = Base64.encodeToString(PassV.getBytes(), Base64.DEFAULT);
-
-                //UserV = new String( Base64.decode( UserV, Base64.DEFAULT ) );
-                //PassV = new String( Base64.decode( PassV, Base64.DEFAULT ) );
 
                 spe.putString(ARG_USER, UserV);
                 spe.putString(ARG_PASS, PassV);

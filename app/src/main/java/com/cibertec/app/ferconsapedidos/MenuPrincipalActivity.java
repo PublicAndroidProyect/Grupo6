@@ -48,7 +48,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 ARG_OPCION = ARG_OPCION_NUEVOPEDIDO;
 
                 MenuPrincipalActivity.this.startActivity(newIncome);
-                dlmenu.closeDrawer(Gravity.START);
+                dlmenu.closeDrawer(Gravity.LEFT);
             }
         });
         btPedidos = (Button)findViewById(R.id.btPedidos);
@@ -59,7 +59,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 ARG_OPCION = ARG_OPCION_PEDIDOS;
 
                 MenuPrincipalActivity.this.startActivity(intentPedido);
-                dlmenu.closeDrawer(Gravity.START);
+                dlmenu.closeDrawer(Gravity.LEFT);
             }
         });
 
@@ -70,7 +70,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 Intent newIncome = new Intent(MenuPrincipalActivity.this,ClientesActivity.class);
                 ARG_OPCION = ARG_OPCION_CLIENTES;
                 MenuPrincipalActivity.this.startActivity(newIncome);
-                dlmenu.closeDrawer(Gravity.START);
+                dlmenu.closeDrawer(Gravity.LEFT);
             }
         });
 
@@ -80,7 +80,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentSincroniza = new Intent(MenuPrincipalActivity.this, SincronizarActivity.class);
                 MenuPrincipalActivity.this.startActivity(intentSincroniza);
-                dlmenu.closeDrawer(Gravity.START);
+                dlmenu.closeDrawer(Gravity.LEFT);
             }
         });
 
@@ -134,7 +134,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -144,24 +144,23 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-//        return super.onOptionsItemSelected(item);
+
         switch (item.getItemId()) {
             case R.id.idCerrarSesion:
 
-                //   Toast.makeText(MenuPrincipalActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
+
 
 
                 SharedPreferences.Editor spe = sp.edit();
                 String UserV, PassV;
-                //   UserV = etuser.getText().toString().trim();
-                // PassV = etpassword.getText().toString().trim();
+
 
                 spe.putString(ARG_USER, "");
                 spe.putString(ARG_PASS, "");
                 spe.commit();
 
                 Intent intent = new Intent(MenuPrincipalActivity.this, LoginActivity.class);
-                //  intent.putExtra(UI_MENU.ARG_USERNAME, UserV);
+
 
                 startActivity(intent);
 

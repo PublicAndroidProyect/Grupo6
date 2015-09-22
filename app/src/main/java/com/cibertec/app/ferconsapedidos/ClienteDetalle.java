@@ -52,13 +52,12 @@ public class ClienteDetalle extends AppCompatActivity implements OnMapReadyCallb
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-        //mGoogleMap.addMarker(new MarkerOptions().position(new LatLng(-11.994317, -77.078928)).title("Marker").draggable(true));
-        //mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(-11.994317, -77.078928)));
+
         mGoogleMap.addMarker(new MarkerOptions().position(new LatLng(latitud, longitud)).title("Marker").draggable(true));
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latitud, longitud)));
         mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
         mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 
-        //GoogleMapOptions options = new GoogleMapOptions().liteMode(true);
+
     }
 }
