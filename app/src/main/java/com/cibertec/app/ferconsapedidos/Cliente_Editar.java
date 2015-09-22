@@ -13,10 +13,13 @@ import android.widget.EditText;
 
 import com.cibertec.app.ferconsapedidos.Entidad.Cliente;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Cliente_Editar extends AppCompatActivity {
 
-    private TextInputLayout tilcliente, tilRUC, tilDireccion, tilTelf ,tilLatitud,tilLongitud ;
-    private EditText etcliente, etRUC, etDireccion, etTelf,etLatitud,etLongitud;
+    private TextInputLayout tilcliente, tilRUC, tilDireccion, tilTelf, tilLatitud, tilLongitud;
+    private EditText etcliente, etRUC, etDireccion, etTelf, etLatitud, etLongitud;
     private Button btacciones, btguardar;
 
     private int position = -1;
@@ -31,15 +34,15 @@ public class Cliente_Editar extends AppCompatActivity {
         tilRUC = (TextInputLayout) findViewById(R.id.tilRUC);
         tilDireccion = (TextInputLayout) findViewById(R.id.tilDireccion);
         tilTelf = (TextInputLayout) findViewById(R.id.tilTelf);
-        tilLatitud =(TextInputLayout) findViewById(R.id.tilLatitud);
-        tilLongitud=(TextInputLayout) findViewById(R.id.tilLongitud);
+        tilLatitud = (TextInputLayout) findViewById(R.id.tilLatitud);
+        tilLongitud = (TextInputLayout) findViewById(R.id.tilLongitud);
 
         etcliente = (EditText) findViewById(R.id.etcliente);
         etRUC = (EditText) findViewById(R.id.etRUC);
         etDireccion = (EditText) findViewById(R.id.etDireccion);
         etTelf = (EditText) findViewById(R.id.etTelf);
-        etLatitud=(EditText) findViewById(R.id.etLatitud);
-        etLongitud=(EditText) findViewById(R.id.etLongitud);
+        etLatitud = (EditText) findViewById(R.id.etLatitud);
+        etLongitud = (EditText) findViewById(R.id.etLongitud);
 
         btacciones = (Button) findViewById(R.id.btacciones);
         btguardar = (Button) findViewById(R.id.btguardar);
@@ -66,7 +69,7 @@ public class Cliente_Editar extends AppCompatActivity {
         }
 
 
-         btacciones.setOnClickListener(btaccionesOnClickListener);
+        btacciones.setOnClickListener(btaccionesOnClickListener);
         btguardar.setOnClickListener(btguardarOnClickListener);
 
     }
@@ -131,15 +134,20 @@ public class Cliente_Editar extends AppCompatActivity {
             tilLongitud.setErrorEnabled(false);
 
 
-            //try{
+            CadenaDecimal cadenaDecimal = new CadenaDecimal();
+            if ( !cadenaDecimal.esDecimal(etLatitud.getText().toString().trim()) ){
+                tilLatitud.setErrorEnabled(true);
+                tilLatitud.setError("Ingrese el dato de Latitud correcto");
+                isComplete = false;
+            }
 
-             // Float retorno =  Float.parseFloat(etLongitud.getText().toString());
+            if ( !cadenaDecimal.esDecimal(etLongitud.getText().toString().trim()) ){
+                tilLongitud.setErrorEnabled(true);
+                tilLongitud.setError("Ingrese el dato de Longitud correcto");
+                isComplete = false;
+            }
 
-            //}catch(NumberFormatException e){
 
-              //  isComplete = false;
-              //  tilLongitud.setError("Formato Longitud incorrecto");
-           // }
 
             if (etcliente.getText().toString().trim().length() <= 0) {
                 tilcliente.setErrorEnabled(true);
@@ -196,5 +204,67 @@ public class Cliente_Editar extends AppCompatActivity {
         }
     };
 
+    public class CadenaDecimal {
+        //Devuelve true si la cadena que llega tiene la sintaxis de un decimal
+        public boolean esDecimal(String cad) {
+            boolean hayPunto = false ,hayRaya=false ,hayMas=false;
+            StringBuffer parteEntera = new StringBuffer();
+            StringBuffer parteDecimal = new StringBuffer();
+            int i = 0, posicionDelPunto ,posicionRaya,posicionMas;
+            int contPunto = 0,contRaya=0,contMas=0;
 
+            if (cad.equals(".")){return false;}
+
+            for (i = 0; i < cad.length(); i++) {
+                if (cad.charAt(i) == '.')                          //Detectar si hay un punto decimal en la cadena
+                {
+                    hayPunto = true;
+                    contPunto++;
+                }
+                if (cad.charAt(i) == '-')                          //Detectar si hay un punto decimal en la cadena
+                {
+                    hayRaya = true;
+                    contRaya++;
+                }
+                if (cad.charAt(i) == '+')                          //Detectar si hay un punto decimal en la cadena
+                {
+                    hayMas = true;
+                    contMas++;
+                }
+            }
+            if  ( contPunto > 1){ return false; }
+            if  ( contRaya  > 1){ return false; }
+            if  ( contMas  > 1){ return false; }
+
+            if (hayRaya) {
+                posicionRaya = cad.indexOf('-');
+                if (posicionRaya>0){
+                    return false;
+                }
+
+            }
+            if (hayMas) {
+                posicionMas = cad.indexOf('+');
+                if (posicionMas>0){
+                    return false;
+                }
+
+            }
+            if (hayPunto) {
+                posicionDelPunto = cad.indexOf('.');
+            }
+            else
+                return false;
+
+            if (posicionDelPunto == cad.length() - 1 || posicionDelPunto == 0)
+                return false;
+
+             if (Double.valueOf(cad)==0){return false;}
+
+            return true;
+        }
+
+
+    }
 }
+
