@@ -56,11 +56,11 @@ public class AdaptadorCondicionPago extends ArrayAdapter<CondicionPago> {
 
         }
 
-        CondicionPago persona = getItem(position);
+        CondicionPago condicionPago = getItem(position);
 
 
 
-        condicionPagoAdapterViewHolder.CondicionPago.setText(persona.getCondicionPago());
+        condicionPagoAdapterViewHolder.CondicionPago.setText(condicionPago.getCondicionPago());
 
 
 

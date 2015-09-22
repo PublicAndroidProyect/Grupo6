@@ -86,22 +86,7 @@ public class ClientesActivity extends AppCompatActivity {
             }
         });
 
-        adaptadorCliente.setOnLongClickListener(new View.OnLongClickListener() {
 
-            @Override
-            public boolean onLongClick(View v) {
-
-                //int itemPosition = recViewCliente.getChildAdapterPosition(v);
-                //Cliente cliente = arrayCliente.get(itemPosition);
-                //Intent intent = new Intent(getBaseContext(), Cliente_Editar.class);
-                //intent.putExtra(ARG_CLIENTE, cliente);
-                //intent.putExtra(ARG_POSITION, itemPosition);
-                //intent.putExtra(ARG_IDCLIENTE, String.valueOf(cliente.getIdCliente()));
-                //startActivityForResult(intent, REQUEST_CODE_CLICK);
-
-                return true;
-            }
-        });
 
 
     }

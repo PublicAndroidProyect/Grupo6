@@ -17,13 +17,13 @@ import java.util.ArrayList;
 /**
  * Created by jdiaz on 30/08/2015.
  */
-public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.ClienteViewHolder> implements  Filterable,View.OnClickListener , View.OnLongClickListener {
+public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.ClienteViewHolder> implements  Filterable,View.OnClickListener  {
 
 
     private ArrayList<Cliente> datos;
     public View view;
     private View.OnClickListener listener;
-    private View.OnLongClickListener longlistener;
+
     private Filter filter;
     private ArrayList<Cliente> original;
     private ArrayList<Cliente> fitems;
@@ -41,21 +41,13 @@ public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.Clie
     public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
-    public void setOnLongClickListener(View.OnLongClickListener listener) {
-        this.longlistener = listener;
-    }
+
     @Override
     public void onClick(View view) {
         if (listener != null) listener.onClick(view);
     }
 
-    @Override
-    public boolean onLongClick(View view) {
 
-        if (longlistener != null) longlistener.onLongClick(view);
-        return true;
-
-    }
 
     public class ClienteViewHolder extends RecyclerView.ViewHolder {
         private TextView tvNombreCliente;
@@ -80,7 +72,7 @@ public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.Clie
         tvh.tvRUC = (TextView) itemView.findViewById(R.id.tvRUC);
 
         itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
+
         return tvh;
 
     }
