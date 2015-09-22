@@ -43,29 +43,33 @@ public class PedidoDetalleNuevoItemActivity extends AppCompatActivity {
         tvDescripcionProducto.setText(producto.getDescripcionProducto());
         tvUnidadProducto.setText(producto.getUnidad());
         tvPrecioProducto.setText(producto.getPrecio().toString());
-
-
+        tilCantidadProductoNuevo = (TextInputLayout) findViewById(R.id.tilCantidadProductoNuevo);
+        tilCantidadProductoNuevo.setErrorEnabled(false);
         btAdicionarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 boolean isCorrect = true;
-                tilCantidadProductoNuevo = (TextInputLayout) findViewById(R.id.tilCantidadProductoNuevo);
-                tilCantidadProductoNuevo.setErrorEnabled(false);
-                if (tilCantidadProductoNuevo.getEditText().getText().toString().trim().length() <= 0) {
+
+                etCantidadProducto = (EditText) findViewById(R.id.etCantidadProducto);
+
+                if (etCantidadProducto.getText().toString().trim().length() <= 0) {
                     tilCantidadProductoNuevo.setError("Ingrese una cantidad");
                     tilCantidadProductoNuevo.setErrorEnabled(true);
                     isCorrect = false;
+                    return;
                 }
                 if (tilCantidadProductoNuevo.getEditText().getText().toString().trim().equals(".")) {
                     tilCantidadProductoNuevo.setError("Ingrese una cantidad");
                     tilCantidadProductoNuevo.setErrorEnabled(true);
                     isCorrect = false;
+                    return;
                 }
                 if ( Double.valueOf(tilCantidadProductoNuevo.getEditText().getText().toString().trim()) <= 0 ) {
                     tilCantidadProductoNuevo.setError("Ingrese una cantidad");
                     tilCantidadProductoNuevo.setErrorEnabled(true);
                     isCorrect = false;
+                    return;
                 }
                 if (!isCorrect) {
                     return;

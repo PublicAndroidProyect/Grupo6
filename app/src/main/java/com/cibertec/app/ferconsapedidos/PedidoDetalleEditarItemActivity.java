@@ -56,16 +56,20 @@ public class PedidoDetalleEditarItemActivity extends AppCompatActivity {
                     tilCantidadProductoEditar.setError("Ingrese una cantidad");
                     tilCantidadProductoEditar.setErrorEnabled(true);
                     isCorrect = false;
+                    return;
                 }
                 if (tilCantidadProductoEditar.getEditText().getText().toString().trim().equals(".")) {
                     tilCantidadProductoEditar.setError("Ingrese una cantidad");
                     tilCantidadProductoEditar.setErrorEnabled(true);
                     isCorrect = false;
+                    return;
+
                 }
                 if ( Double.valueOf(tilCantidadProductoEditar.getEditText().getText().toString().trim()) <= 0 ) {
                     tilCantidadProductoEditar.setError("Ingrese una cantidad");
                     tilCantidadProductoEditar.setErrorEnabled(true);
                     isCorrect = false;
+                    return;
                 }
                 if (!isCorrect) {
                     return;
