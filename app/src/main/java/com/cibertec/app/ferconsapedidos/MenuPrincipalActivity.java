@@ -30,10 +30,12 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     public final static Integer  ARG_OPCION_PEDIDOS = 2;
     public final static Integer  ARG_OPCION_NUEVOPEDIDO = 1;
     private SharedPreferences sp;
-
     private TextView tvNick;
     public final static String ARG_USER = "arg_user";
     private final String ARG_PASS = "arg_pass";
+    public  static String ARG_USERID = "arg_ide";
+    public  static String USERID = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +111,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         tvNick = (TextView) findViewById(R.id.tvNick);
         Intent intent = getIntent();
         String username = intent.getStringExtra(MenuPrincipalActivity.ARG_USER);
+        USERID = intent.getStringExtra(MenuPrincipalActivity.ARG_USERID);
 
         tvNick.setText(username);
     }
@@ -148,24 +151,16 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.idCerrarSesion:
 
-
-
-
                 SharedPreferences.Editor spe = sp.edit();
-                String UserV, PassV;
-
+                String UserV, PassV ;
 
                 spe.putString(ARG_USER, "");
                 spe.putString(ARG_PASS, "");
                 spe.commit();
 
                 Intent intent = new Intent(MenuPrincipalActivity.this, LoginActivity.class);
-
-
                 startActivity(intent);
-
                 finish();
-
                 return true;
 
             default:

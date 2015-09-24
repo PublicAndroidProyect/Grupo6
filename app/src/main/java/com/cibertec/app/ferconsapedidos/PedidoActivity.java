@@ -186,7 +186,7 @@ public class PedidoActivity extends AppCompatActivity {
 
             PedidoCabecera pedidoCabecera = new PedidoCabecera();
             pedidoCabecera.setIdCliente(IdCliente);
-            pedidoCabecera.setIdUsuario(1);
+            pedidoCabecera.setIdUsuario(Integer.parseInt(MenuPrincipalActivity.USERID));
             pedidoCabecera.setFechaPedido(tvFechaPedido.getText().toString());
             pedidoCabecera.setIdCondicionDePago(IdCondicionPago);
             TextView textView = (TextView)spCondicionPago.getSelectedView().findViewById(R.id.tvCondicionPago);
