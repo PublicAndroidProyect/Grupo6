@@ -19,7 +19,8 @@
 
                     <ImageView
                         android:id="@+id/ivProject"
-                        android:src="@drawable/client"
+                        android:src="@drawable/ic_person_black_36dp"
+                        android:alpha="0.70"
                         style="@style/CardViewProjectImagenClient" />
 
                     <TextView

@@ -96,12 +96,16 @@
         <Button
             android:id="@+id/btEditarProducto"
             android:text="@string/Button_update"
-            style="@style/Buttom" />
+            style="@style/Buttom"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue"/>
 
         <Button
             android:id="@+id/btRemoverProducto"
             android:text="@string/Button_remove"
-            style="@style/Buttom" />
+            style="@style/Buttom"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue"/>
     </LinearLayout>
 
 

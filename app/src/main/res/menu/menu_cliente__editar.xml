@@ -6,7 +6,7 @@
     <item
         android:id="@+id/action_mapa"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_gps_fixed_white_24dp"
+        android:icon="@drawable/ic_location_on_white_24dp"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom"/>
 

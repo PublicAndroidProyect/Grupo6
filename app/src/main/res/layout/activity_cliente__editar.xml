@@ -85,11 +85,15 @@
         <Button
             android:id="@+id/btguardar"
             android:text="@string/Button_save"
-            style="@style/Buttom" />
+            style="@style/Buttom"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue"/>
         <Button
             android:id="@+id/btacciones"
             android:text="@string/Button_cancel"
-            style="@style/Buttom" />
+            style="@style/Buttom"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue"/>
 
     </LinearLayout>
 

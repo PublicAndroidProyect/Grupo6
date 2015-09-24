@@ -1,11 +1,14 @@
 package com.cibertec.app.ferconsapedidos;
 
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,7 +35,6 @@ public class PedidoCabeceraActivity extends AppCompatActivity {
 
 
 
-    EditText etBuscaPedido;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,23 +47,7 @@ public class PedidoCabeceraActivity extends AppCompatActivity {
         ListPedidoCabecera.setAdapter(adpatadorPedidoCabecera);
         ListPedidoCabecera.setTextFilterEnabled(true);
         ListPedidoCabecera.setOnItemClickListener(lvPedidoCabeceraOnItemClickListener);
-        etBuscaPedido = (EditText)findViewById(R.id.etBuscaPedido);
-        etBuscaPedido.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adpatadorPedidoCabecera.getFilter().filter(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
     }
 
@@ -80,6 +66,37 @@ public class PedidoCabeceraActivity extends AppCompatActivity {
     };
 
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_clientes, menu);
+        final MenuItem searchItem = menu.findItem(R.id.iSearch);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setQueryHint(getText(R.string.Search_Client));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(PedidoCabeceraActivity.this, R.string.Search_Client, Toast.LENGTH_SHORT).show();
+                searchView.setQuery("", false);
+                searchView.setIconified(true);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //textView.setText(newText);
+                adpatadorPedidoCabecera.getFilter().filter(newText.toString());
+                return true;
+            }
+
+        });
+        //check http://stackoverflow.com/questions/11085308/changing-the-background-drawable-of-the-searchview-widget
+        //View searchPlate = (View) searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
+        //searchPlate.setBackgroundResource(R.color.Red);
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

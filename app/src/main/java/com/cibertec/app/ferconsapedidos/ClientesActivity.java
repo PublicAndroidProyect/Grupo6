@@ -1,13 +1,17 @@
 package com.cibertec.app.ferconsapedidos;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,12 +31,12 @@ public class ClientesActivity extends AppCompatActivity {
     private AdaptadorCliente adaptadorCliente;
     private ArrayList<Cliente> arrayCliente;
     private RecyclerView recViewCliente;
-    private EditText etBuscaCliente;
     public final static String ARG_CLIENTE = "ARG_CLIENTE", ARG_POSITION = "ARG_POSITION";
     public final static String ARG_IDCLIENTE = "ARG_IDCLIENTE";
     private final static int REQUEST_CODE_CLICK = 3;
     private final static int REQUEST_CODE = 1;
     private ClienteDAO mClienteDAO;
+    private FloatingActionButton fabAddClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,23 +50,7 @@ public class ClientesActivity extends AppCompatActivity {
         recViewCliente.setAdapter(adaptadorCliente);
         mClienteDAO = new ClienteDAO();
         recViewCliente.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        etBuscaCliente = (EditText) findViewById(R.id.etBuscarCliente);
-        etBuscaCliente.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adaptadorCliente.getFilter().filter(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        fabAddClient = (FloatingActionButton) findViewById(R.id.fabAddClient);
 
         adaptadorCliente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,18 +77,45 @@ public class ClientesActivity extends AppCompatActivity {
 
 
 
+        fabAddClient.setOnClickListener(fabAddClientOnClickListener);
     }
 
+    View.OnClickListener fabAddClientOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getBaseContext(), Cliente_Editar.class);
+            startActivityForResult(intent, REQUEST_CODE);
+        }
+    };
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_clientes, menu);
-        if (MenuPrincipalActivity.ARG_OPCION==MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){
-            menu.findItem(R.id.action_add).setVisible(false);
-            menu.findItem(R.id.action_settings).setVisible(false);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_clientes, menu);
+        final MenuItem searchItem = menu.findItem(R.id.iSearch);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setQueryHint(getText(R.string.Search_Client));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(ClientesActivity.this, R.string.Search_Client, Toast.LENGTH_SHORT).show();
+                searchView.setQuery("", false);
+                searchView.setIconified(true);
+                return true;
+            }
 
-        }
-        return true;
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //textView.setText(newText);
+                adaptadorCliente.getFilter().filter(newText.toString());
+                return true;
+            }
+
+        });
+        //check http://stackoverflow.com/questions/11085308/changing-the-background-drawable-of-the-searchview-widget
+        //View searchPlate = (View) searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
+        //searchPlate.setBackgroundResource(R.color.Red);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -111,19 +126,9 @@ public class ClientesActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getBaseContext(), ClienteDetalle.class);
-
             startActivity(intent);
-
-
         }
 
-        if (id == R.id.action_add) {
-            Intent intent = new Intent(getBaseContext(), Cliente_Editar.class);
-
-            startActivityForResult(intent, REQUEST_CODE);
-
-
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -156,7 +161,7 @@ public class ClientesActivity extends AppCompatActivity {
                 //mClienteDAO.deleteCliente(cliente);
             }
 
-             adaptadorCliente.notifyDataSetChanged();
+            adaptadorCliente.notifyDataSetChanged();
 
         } else if (requestCode == REQUEST_CODE_CLICK && resultCode == RESULT_OK) {
             int position = data.getIntExtra(ARG_POSITION, -1);

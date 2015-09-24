@@ -1,34 +1,43 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".UiLoginActivity"
-    style="@style/MainContainer">
-    <LinearLayout style="@style/LoginContainer">w
+<android.widget.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ScrollViewVertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        style="@style/LoginContainer"
+        tools:context=".UiLoginActivity">
+
         <ImageView style="@style/LoginImageView" />
+
         <TextView
             style="@style/LoginTextView"
-            android:text="@string/app_name"/>
+            android:text="@string/app_name" />
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tilUser"
             style="@style/LoginTextInputLayout">
+
             <EditText
                 android:id="@+id/etUser"
+                style="@style/EditText"
                 android:hint="@string/Login_user"
-                android:inputType="text"
-                style="@style/EditText" />
+                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tilPassword"
             style="@style/LoginTextInputLayout">
+
             <EditText
                 android:id="@+id/etPassword"
+                style="@style/EditText"
                 android:hint="@string/Login_password"
-                android:inputType="textPassword"
-                style="@style/EditText" />
+                android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
+
         <Button
             android:id="@+id/btAcceder"
-            style="@style/SignInButtom"
-            android:text="INGRESAR"/>
+            style="@style/LoginSignInButtom"
+            android:background="@drawable/ripple_blue"
+            android:text="INGRESAR" />
     </LinearLayout>
-
-</LinearLayout>
+</android.widget.ScrollView>

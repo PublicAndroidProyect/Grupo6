@@ -96,12 +96,16 @@
         <Button
             android:id="@+id/btAdicionarProducto"
             android:text="@string/Button_add"
-            style="@style/Buttom" />
+            style="@style/Buttom"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue" />
 
         <Button
             android:id="@+id/btCancelar"
             android:text="@string/Button_cancel"
-            style="@style/Buttom" />
+            style="@style/Buttom"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue" />
     </LinearLayout>
 
 

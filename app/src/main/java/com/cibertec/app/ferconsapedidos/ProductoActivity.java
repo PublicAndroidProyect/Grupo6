@@ -1,16 +1,20 @@
 package com.cibertec.app.ferconsapedidos;
 
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.cibertec.app.ferconsapedidos.Adaptador.AdaptadorCliente;
 import com.cibertec.app.ferconsapedidos.Adaptador.AdaptadorProducto;
@@ -27,7 +31,6 @@ public class ProductoActivity extends AppCompatActivity {
     private AdaptadorProducto adaptadorProducto;
     private ArrayList<Producto> arrayProducto;
     private RecyclerView recViewProducto;
-    private EditText etBuscaProducto;
 
     public final static String ARG_PRODUCTO = "ARG_PRODUCTO";
     public final static String ARG_POSITION_PRODUCTO = "ARG_POSITION_PRODUCTO";
@@ -46,23 +49,7 @@ public class ProductoActivity extends AppCompatActivity {
 
         recViewProducto.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        etBuscaProducto = (EditText)findViewById(R.id.etBuscarProducto);
-        etBuscaProducto.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adaptadorProducto.getFilter().filter(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         adaptadorProducto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,9 +83,33 @@ public class ProductoActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_producto, menu);
-        return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_clientes, menu);
+        final MenuItem searchItem = menu.findItem(R.id.iSearch);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setQueryHint(getText(R.string.Search_Client));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(ProductoActivity.this, R.string.Search_Client, Toast.LENGTH_SHORT).show();
+                searchView.setQuery("", false);
+                searchView.setIconified(true);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //textView.setText(newText);
+                adaptadorProducto.getFilter().filter(newText.toString());
+                return true;
+            }
+
+        });
+        //check http://stackoverflow.com/questions/11085308/changing-the-background-drawable-of-the-searchview-widget
+        //View searchPlate = (View) searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
+        //searchPlate.setBackgroundResource(R.color.Red);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

@@ -9,7 +9,8 @@
 
             <ImageView
                 android:id="@+id/ivProject"
-                android:src="@drawable/product"
+                android:src="@drawable/ic_perm_data_setting_black_36dp"
+                android:alpha="0.7"
                 style="@style/CardViewProjectImagen" />
 
             <TextView

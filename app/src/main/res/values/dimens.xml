@@ -1,7 +1,35 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="TextSize">14dp</dimen>
+
+    <dimen name="PaddingContainer">16dp</dimen>
+
+    <dimen name="ImageLoginWidth">110dp</dimen>
+    <dimen name="ImageLoginHeight">110dp</dimen>
+    <dimen name="ImageLoginMarginBottom">40dp</dimen>
+
+    <dimen name="TextViewLoginMarginBottom">20dp</dimen>
+    <dimen name="TextViewLoginMarginTop">20dp</dimen>
+    <dimen name="TextViewLoginTextSize">25dp</dimen>
+    <dimen name="TextSizeLoginSignInButtom">16dp</dimen>
+
+    <dimen name="TextInputLayoutLoginWidth">320dp</dimen>
+
+    <dimen name="EditTextMarginTop">5dp</dimen>
+    <dimen name="EditTextMarginBottom">5dp</dimen>
+
+    <dimen name="EditTextTextSize">14dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+
+
+
+
+
 
     <dimen name="AppThemetextSize">14dp</dimen>
     <dimen name="MainContainerPaddingpadding">20dp</dimen>
@@ -35,8 +63,8 @@
     <dimen name="TemplateUserImagenlayout_heightp">50dp</dimen>
     <dimen name="TemplateUserImagenlayout_margin">20dp</dimen>
 
-    <dimen name="TemplateUserNicklayout_marginLeft">90dp</dimen>
-    <dimen name="TemplateUserNicklayout_marginTop">35dp</dimen>
+    <dimen name="TemplateUserNicklayout_marginLeft">25dp</dimen>
+    <dimen name="TemplateUserNicklayout_marginTop">78dp</dimen>
     <dimen name="TemplateUserNicktextSize">16dp</dimen>
 
     <!--General-->
