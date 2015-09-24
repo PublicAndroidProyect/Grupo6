@@ -28,8 +28,10 @@ import com.cibertec.app.ferconsapedidos.Entidad.CondicionPago;
 import com.cibertec.app.ferconsapedidos.Entidad.PedidoCabecera;
 import com.cibertec.app.ferconsapedidos.Entidad.PedidoDetalle;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class PedidoActivity extends AppCompatActivity {
     private TextView tvNombreCliente;
@@ -77,6 +79,7 @@ public class PedidoActivity extends AppCompatActivity {
         month = cal.get(Calendar.MONTH);
         year = cal.get(Calendar.YEAR);
 
+
         spCondicionPago = (Spinner)findViewById(R.id.spCondicionPago);
         adpatadorCondicionPago = new AdaptadorCondicionPago(this, 0,new CondicionPagoDAO().listCondicionPago());
         spCondicionPago.setAdapter(adpatadorCondicionPago);
@@ -94,6 +97,7 @@ public class PedidoActivity extends AppCompatActivity {
 
             ArrayPedidoDetalle= new ArrayList<PedidoDetalle>();
             tvFechaPedido.setText(String.format("%02d", day) + " / " + String.format("%02d", (month + 1)) + " / " + year);
+
         }
 
         if (proceso == MenuPrincipalActivity.ARG_OPCION_PEDIDOS){ //2
@@ -125,10 +129,18 @@ public class PedidoActivity extends AppCompatActivity {
         List.setAdapter(adapatadorPedidoDetalle);
         List.setOnItemClickListener(lvPedidoDetalleOnItemClickListener);
 
+
+
         tvFechaPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog(0);
+                //showDialog(0);
+                Calendar calendar = Calendar.getInstance();
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PedidoActivity.this, dpetOnDateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setCalendarViewShown(false);
+                datePickerDialog.setTitle("Fecha Pedido");
+
+                datePickerDialog.show();
             }
         });
 
@@ -322,20 +334,7 @@ public class PedidoActivity extends AppCompatActivity {
 
 
 
-    @Override
-    @Deprecated
-    protected Dialog onCreateDialog(int id) {
-        return new DatePickerDialog(this, datePickerListener, year, month, day);
-    }
 
-
-    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
-        public void onDateSet(DatePicker view, int selectedYear,
-                              int selectedMonth, int selectedDay) {
-            tvFechaPedido.setText(String.format("%02d", selectedDay) + " / " + String.format("%02d", (selectedMonth + 1)) + " / " + selectedYear);
-
-        }
-    };
 
 
     private Double ObtenerTotalPedido (ListView lv){
@@ -365,6 +364,15 @@ public class PedidoActivity extends AppCompatActivity {
         }
         return resultadoBusqueda;
     };
-
+    DatePickerDialog.OnDateSetListener dpetOnDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            Calendar c = Calendar.getInstance();
+            c.set(year, monthOfYear, dayOfMonth);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            tvFechaPedido.setText(sdf.format(c.getTime()));
+            getWindow().getDecorView().clearFocus();
+        }
+    };
 }
 
