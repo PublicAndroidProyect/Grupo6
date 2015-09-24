@@ -5,6 +5,7 @@
     <string name="Login_password">Contraseña</string>
     <string name="Login_button">INGRESAR</string>
     <string name="Search_Client">Buscar cliente por Razón Social / RUC</string>
+    <string name="Search_Pedido">Buscar por Nº Pedido / Cliente </string>
     <string name="Order_detail">Detalle Pedido</string>
     <string name="Order_code">Código</string>
     <string name="Order_unit">Uni</string>
@@ -34,7 +35,7 @@
     <string name="Client_Latitud">Latitud</string>
     <string name="Client_Longitud">Longitud</string>
     <string name="Product_sync">Sincronizar productos</string>
-    <string name="Product_sync_cancel">Sincronizar productos</string>
+    <string name="Product_sync_cancel">Cancelar</string>
 
 
 

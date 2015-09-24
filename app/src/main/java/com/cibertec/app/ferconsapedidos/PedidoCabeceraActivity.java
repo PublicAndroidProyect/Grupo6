@@ -73,11 +73,11 @@ public class PedidoCabeceraActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_clientes, menu);
         final MenuItem searchItem = menu.findItem(R.id.iSearch);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setQueryHint(getText(R.string.Search_Client));
+        searchView.setQueryHint(getText(R.string.Search_Pedido));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(PedidoCabeceraActivity.this, R.string.Search_Client, Toast.LENGTH_SHORT).show();
+                Toast.makeText(PedidoCabeceraActivity.this, R.string.Search_Pedido, Toast.LENGTH_SHORT).show();
                 searchView.setQuery("", false);
                 searchView.setIconified(true);
                 return true;

@@ -12,12 +12,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.cibertec.app.ferconsapedidos.Adaptador.AdaptadorCondicionPago;
 import com.cibertec.app.ferconsapedidos.Adaptador.AdaptadorPedidoDetalle;
 import com.cibertec.app.ferconsapedidos.Dao.CondicionPagoDAO;
@@ -27,7 +25,6 @@ import com.cibertec.app.ferconsapedidos.Entidad.Cliente;
 import com.cibertec.app.ferconsapedidos.Entidad.CondicionPago;
 import com.cibertec.app.ferconsapedidos.Entidad.PedidoCabecera;
 import com.cibertec.app.ferconsapedidos.Entidad.PedidoDetalle;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,7 +33,6 @@ import java.util.Locale;
 public class PedidoActivity extends AppCompatActivity {
     private TextView tvNombreCliente;
     private TextView tvRuc;
-    private TextView tvNumeroPedido;
     private TextView tvFechaPedido;
     private TextView tvTotal;
     private FloatingActionButton btAgregarProducto;
@@ -109,7 +105,7 @@ public class PedidoActivity extends AppCompatActivity {
             tvFechaPedido = (TextView)findViewById(R.id.tvFechaPedido);
             tvNombreCliente.setText(pedidoCabecera.getNombreCliente());
             IdPedidoCabecera=pedidoCabecera.getIdPedidoCabecera();
-            tvRuc.setText(pedidoCabecera.getRuc()+"     NoPedido :"+String.valueOf(IdPedidoCabecera));
+            tvRuc.setText(pedidoCabecera.getRuc()+"     NºPedido :"+String.valueOf(IdPedidoCabecera));
             IdCliente = pedidoCabecera.getIdCliente(); ;
             tvFechaPedido.setText(pedidoCabecera.getFechaPedido());
             ArrayPedidoDetalle= new PedidoDetalleDAO().listPedidoDetalleBuscar(String.valueOf(IdPedidoCabecera));
@@ -134,7 +130,7 @@ public class PedidoActivity extends AppCompatActivity {
         tvFechaPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //showDialog(0);
+
                 Calendar calendar = Calendar.getInstance();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(PedidoActivity.this, dpetOnDateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.getDatePicker().setCalendarViewShown(false);
@@ -168,7 +164,7 @@ public class PedidoActivity extends AppCompatActivity {
                     return;
                 }
                 String MensajeTituloDialogPedido = proceso == MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO ? "Registrar Nuevo Pedido" : "Editar Pedido";
-                String MensajeContenidoDialogPedido = proceso == MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO ? "Se enviara el pedido del cliente : "+tvNombreCliente.getText(): "Se actualizara el pedido No"+String.valueOf(IdPedidoCabecera);
+                String MensajeContenidoDialogPedido = proceso == MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO ? "Se enviará el pedido del cliente : "+tvNombreCliente.getText(): "Se actualizará el pedido Nº"+String.valueOf(IdPedidoCabecera);
                 new AlertDialog.Builder(PedidoActivity.this).setTitle(MensajeTituloDialogPedido).setMessage(MensajeContenidoDialogPedido ).setNegativeButton("Cancelar", alertAcceptCancelCancelOnClickListener).setPositiveButton("Aceptar", alertAcceptCancelAcceptOnClickListener).setCancelable(false).show();
 
 
@@ -208,13 +204,13 @@ public class PedidoActivity extends AppCompatActivity {
 
             if (proceso== MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){ //1 Nuevo pedido
                 IdPedidoCabecera =  pedidoCabeceraDAO.addPedidoCabecera(pedidoCabecera);
-                MensajeTransaccion ="Se creo el pedido No ";
+                MensajeTransaccion ="Se creó el pedido Nº ";
             }
             if (proceso== MenuPrincipalActivity.ARG_OPCION_PEDIDOS){ //Modif pedido
                 pedidoCabecera.setIdPedidoCabecera(IdPedidoCabecera);
                 pedidoCabeceraDAO.updatePedidoCabecera(pedidoCabecera);
                 new PedidoDetalleDAO().deletePedidoCabeceraAll(IdPedidoCabecera);
-                MensajeTransaccion ="Se actualizo el pedido No ";
+                MensajeTransaccion ="Se actualizó el pedido Nº ";
             }
 
             ListView lv = (ListView)findViewById(R.id.lvDetallePedido);
@@ -309,7 +305,7 @@ public class PedidoActivity extends AppCompatActivity {
             PedidoDetalle pedidoDetalleAux = data.getParcelableExtra(ProductoActivity.ARG_PRODUCTO);
 
             if (ExisteProductoPedido(List,pedidoDetalleAux.getCodigoProducto())){
-                Toast.makeText(getApplicationContext(),"Código "+pedidoDetalleAux.getCodigoProducto() +" ya existe", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Código "+pedidoDetalleAux.getCodigoProducto() +" ya fue ingresado.", Toast.LENGTH_SHORT).show();
                 return;
 
             }
@@ -334,9 +330,6 @@ public class PedidoActivity extends AppCompatActivity {
 
 
 
-
-
-
     private Double ObtenerTotalPedido (ListView lv){
 
         int count = lv.getAdapter().getCount();
@@ -344,7 +337,8 @@ public class PedidoActivity extends AppCompatActivity {
         for (int i = 0; i < count; i++)
         {
             PedidoDetalle pedidoDetalle = (PedidoDetalle) lv.getAdapter().getItem(i);
-            total = total + pedidoDetalle.getCantidad() * pedidoDetalle.getPrecio();// Double.valueOf(tvTest.getText().toString());
+            total = total + pedidoDetalle.getCantidad() * pedidoDetalle.getPrecio();
+
         }
         return total;
     };
