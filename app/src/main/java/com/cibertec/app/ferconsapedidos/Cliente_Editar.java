@@ -1,5 +1,6 @@
 package com.cibertec.app.ferconsapedidos;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -78,6 +79,9 @@ public class Cliente_Editar extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_cliente__editar, menu);
+        if (position == -1) {
+            menu.findItem(R.id.action_mapa).setVisible(false);
+        }
         return true;
     }
 
@@ -88,6 +92,8 @@ public class Cliente_Editar extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
+        //f.setVisibility(View.INVISIBLE);
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_mapa) {
             Cliente cliente = getIntent().getParcelableExtra(ClientesActivity.ARG_CLIENTE);

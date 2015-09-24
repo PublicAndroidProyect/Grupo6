@@ -1,11 +1,12 @@
 <resources>
     <!-- Nombre de apliacion. -->
     <string name="app_name">FerconsaPedidos</string>
+
     <string name="Login_user">Usuario</string>
     <string name="Login_password">Contraseña</string>
     <string name="Login_button">INGRESAR</string>
-    <string name="Search_Client">Buscar cliente por Razón Social / RUC</string>
-    <string name="Search_Pedido">Buscar por Nº Pedido / Cliente </string>
+    <string name="Search_Client">Buscar por Cliente o RUC</string>
+    <string name="Search_Pedido">Buscar por Nº Pedido o Cliente </string>
     <string name="Order_detail">Detalle Pedido</string>
     <string name="Order_code">Código</string>
     <string name="Order_unit">Uni</string>
