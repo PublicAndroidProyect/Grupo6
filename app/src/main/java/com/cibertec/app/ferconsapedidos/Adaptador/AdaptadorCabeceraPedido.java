@@ -108,43 +108,32 @@ public class AdaptadorCabeceraPedido extends ArrayAdapter<PedidoCabecera> {
                 results.values = list;
                 results.count = list.size();
 
-
-                //Log.println(Log.INFO, "mmm", "FOUND");
             }
             else
             {
                 final ArrayList<PedidoCabecera> list = new ArrayList<PedidoCabecera>(original);
                 ArrayList<PedidoCabecera> nlist = new ArrayList<PedidoCabecera>();
                 int count = list.size();
-                //Log.println(Log.INFO, "tamaño", Integer.valueOf(list.size()).toString() );
+
                 for (int i=0; i<count; i++)
                 {
-                    final PedidoCabecera pkmn = original.get(i);  //list.get(i);
-                    //final String value = pkmn.getDescripcion().toLowerCase();
+                    final PedidoCabecera pkmn = original.get(i);
 
-                    //if (value.startsWith(prefix))
-                    if (pkmn.toString().toLowerCase().contains(constraint))
+                    if (pkmn.toString().toLowerCase().contains(prefix))
                     {
                         nlist.add(pkmn);
-                        //Log.println(Log.INFO, "tamaño", );
-                        //System.out.println(pkmn.getDescripcion());
                     }
                 }
                 results.values = nlist;
                 results.count = nlist.size();
             }
-//            Toast.makeText(getContext(), results.count, Toast.LENGTH_SHORT).show();
+
             return results;
         }
 
         @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            //Toast.makeText(getContext(), results.count, Toast.LENGTH_SHORT).show();
-            //if (results.count < 0) {
-            //    Log.println(Log.INFO, "Results", "menor cero");
-            //notifyDataSetChanged();
-            // }else{
             Log.println(Log.INFO, "Results", Integer.valueOf(results.count).toString());
 
             fitems = (ArrayList<PedidoCabecera>) results.values;

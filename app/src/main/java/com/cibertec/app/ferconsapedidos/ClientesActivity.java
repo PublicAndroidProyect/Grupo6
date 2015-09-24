@@ -52,6 +52,10 @@ public class ClientesActivity extends AppCompatActivity {
         recViewCliente.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         fabAddClient = (FloatingActionButton) findViewById(R.id.fabAddClient);
 
+        if (MenuPrincipalActivity.ARG_OPCION==MenuPrincipalActivity.ARG_OPCION_NUEVOPEDIDO){
+            fabAddClient.setVisibility(View.INVISIBLE);
+        }
+
         adaptadorCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,14 +74,13 @@ public class ClientesActivity extends AppCompatActivity {
                     intent.putExtra(ARG_POSITION, itemPosition);
                     intent.putExtra(ARG_IDCLIENTE, String.valueOf(cliente.getIdCliente()));
                     startActivityForResult(intent, REQUEST_CODE_CLICK);
+
                 }
             }
         });
 
-
-
-
         fabAddClient.setOnClickListener(fabAddClientOnClickListener);
+
     }
 
     View.OnClickListener fabAddClientOnClickListener = new View.OnClickListener() {
@@ -105,15 +108,13 @@ public class ClientesActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //textView.setText(newText);
+
                 adaptadorCliente.getFilter().filter(newText.toString());
                 return true;
             }
 
         });
-        //check http://stackoverflow.com/questions/11085308/changing-the-background-drawable-of-the-searchview-widget
-        //View searchPlate = (View) searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
-        //searchPlate.setBackgroundResource(R.color.Red);
+
 
         return super.onCreateOptionsMenu(menu);
     }

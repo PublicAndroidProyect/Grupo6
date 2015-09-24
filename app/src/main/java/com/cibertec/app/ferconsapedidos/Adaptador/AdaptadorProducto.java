@@ -128,7 +128,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
                 {
                     final Producto pkmn = original.get(i);
 
-                    if (pkmn.toString().toLowerCase().contains(constraint))
+                    if (pkmn.toString().toLowerCase().contains(prefix))
                     {
                         nlist.add(pkmn);
 

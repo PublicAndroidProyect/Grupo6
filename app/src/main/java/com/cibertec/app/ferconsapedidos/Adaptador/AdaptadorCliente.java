@@ -170,7 +170,7 @@ public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.Clie
                 {
                     final Cliente pkmn = original.get(i);
 
-                    if (pkmn.toString().toLowerCase().contains(constraint))
+                    if (pkmn.toString().toLowerCase().contains(prefix))
                     {
                         nlist.add(pkmn);
 
