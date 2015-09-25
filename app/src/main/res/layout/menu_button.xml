@@ -44,7 +44,7 @@
         <Button
             android:id="@+id/btCliente"
             android:drawableLeft="@drawable/ic_person_black_18dp"
-            android:text="Cliente"
+            android:text="@string/title_activity_clientes"
             style="@style/MenuButton"
             android:background="@drawable/ripple_dark"/>
 

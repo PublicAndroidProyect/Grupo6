@@ -7,6 +7,8 @@
 
         <Button
             android:id="@+id/btSincronizaProducto"
+            android:clickable="true"
+            android:background="@drawable/ripple_dark"
             style="@style/Buttom"
             android:text="@string/Product_sync" />
 
@@ -21,6 +23,8 @@
             />
 
         <Button
+            android:clickable="true"
+            android:background="@drawable/ripple_dark"
             style="@style/Buttom"
             android:text="@string/Product_sync_cancel"
             android:id="@+id/btCancelar"

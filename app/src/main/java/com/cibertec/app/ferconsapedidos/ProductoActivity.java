@@ -87,11 +87,11 @@ public class ProductoActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_clientes, menu);
         final MenuItem searchItem = menu.findItem(R.id.iSearch);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setQueryHint(getText(R.string.Search_Client));
+        searchView.setQueryHint(getText(R.string.Search_product));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(ProductoActivity.this, R.string.Search_Client, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProductoActivity.this, R.string.Search_product, Toast.LENGTH_SHORT).show();
                 searchView.setQuery("", false);
                 searchView.setIconified(true);
                 return true;
