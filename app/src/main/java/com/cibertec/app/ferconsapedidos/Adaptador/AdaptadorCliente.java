@@ -116,6 +116,8 @@ public class AdaptadorCliente extends RecyclerView.Adapter<AdaptadorCliente.Clie
 
     public void add(Cliente cliente) {
         datos.add(cliente);
+        fitems.add(cliente);
+        original.add(cliente);
         notifyItemInserted(datos.size());
     }
     public void remove(int i) {

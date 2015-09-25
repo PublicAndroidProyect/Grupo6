@@ -146,9 +146,9 @@ public class ClientesActivity extends AppCompatActivity {
             cliente.setIdCliente(idcli);
 
             adaptadorCliente.add(cliente);
-            adaptadorCliente = new AdaptadorCliente(arrayCliente);
-            recViewCliente.setAdapter(adaptadorCliente);
-            adaptadorCliente.notifyDataSetChanged();
+            //adaptadorCliente = new AdaptadorCliente(arrayCliente);
+            //recViewCliente.setAdapter(adaptadorCliente);
+            adaptadorCliente.notifyItemInserted(adaptadorCliente.getItemCount());
 
 
         }

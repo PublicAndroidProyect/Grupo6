@@ -65,7 +65,7 @@ public class Cliente_Editar extends AppCompatActivity {
         } else {
             this.setTitle("Cliente - Nuevo registro");
             btacciones.setVisibility(View.GONE);
-            etLongitud.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
+
 
         }
 
