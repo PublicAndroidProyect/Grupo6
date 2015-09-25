@@ -6,6 +6,6 @@
     <item
         android:id="@+id/idCerrarSesion"
         android:orderInCategory="100"
-        android:title="Cerrar sesión"
+        android:title="@string/Sign_Out"
         app:showAsAction="never" />
 </menu>

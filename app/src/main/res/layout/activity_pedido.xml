@@ -200,7 +200,7 @@
             android:id="@+id/btGrabarPedido"
             style="@style/Buttom"
             android:layout_width="match_parent"
-            android:text="Grabar"
+            android:text="@string/Button_save"
             android:clickable="true"
             android:background="@drawable/ripple_blue"/>
 

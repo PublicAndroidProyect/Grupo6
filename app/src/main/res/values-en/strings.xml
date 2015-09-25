@@ -5,10 +5,10 @@
 
     <string name="Login_user">User</string>
     <string name="Login_password">Passowrd</string>
-    <string name="Login_button">Sing In</string>
+    <string name="Login_button">Sign In</string>
     <string name="Search_Client">Search Client by Business name or RUC</string>
     <string name="Search_Pedido">Search Nº of Order or Client name</string>
-    <string name="Order_detail">Order Detiail</string>
+    <string name="Order_detail">Order Detail</string>
     <string name="Order_code">Code</string>
     <string name="Order_unit">Uni</string>
     <string name="Order_product">Product</string>
@@ -38,6 +38,7 @@
     <string name="Client_Longitud">Length</string>
     <string name="Product_sync">Synchronizing Products</string>
     <string name="Product_sync_cancel">Cancel</string>
+    <string name="Sign_Out">Sign Out</string>
 
 
 
@@ -89,6 +90,6 @@
 
 
     <string name="SearchProduct">Search Product by Description or Code</string>
-    <string name="title_activity_cliente_detalle">Cliente Detail</string>
+    <string name="title_activity_cliente_detalle">Client Detail</string>
     <string name="title_activity_sincronizar">Synchronize</string>
 </resources>
